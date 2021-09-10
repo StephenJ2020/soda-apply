@@ -1,0 +1,34 @@
+/* Root variables & imports */
+@import url('https://fonts.googleapis.com/css2?family=Arvo&family=Roboto&display=swap');
+
+:root {
+    /* 1rem = 10px.
+    This allows for greater control of calculting font sizes */
+    font-size: 62.5%;
+
+    /* Typography */
+    --header-text: 'Arvo', Tahoma;
+    --content-text: 'Roboto', sans-serif;
+
+    /* Colors */
+}
+
+/* Global styles */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 1.6rem;
+    font-family: var(--content-text);
+}
+
+h1 {
+    font-family: var(--header-text);
+}
+
+
+
