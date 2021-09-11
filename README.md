@@ -184,6 +184,7 @@ The app should employ features for accessibility inline with the User Story requ
 
 
 **Profile Page**
+
 ![Profile](docs/wireframes/Profile.png)
 
 * The profile page is designed to be a scrollable page with easy access to the various sections.
