@@ -1,5 +1,9 @@
 import os
+
 from flask import Flask, render_template
+if os.path.exists("env.py"):
+    import env
+import pymongo
 
 
 app = Flask(__name__)
@@ -12,7 +16,8 @@ def index():
 
 if __name__ == "__main__":
     app.run(
-        host = os.environ.get('IP', '127.0.0.1'),
-        port = os.environ.get('PORT', '5000'),
+        host = os.environ.get('IP'),
+        port = os.environ.get('PORT'),
         debug = True
     )
+    
