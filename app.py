@@ -28,6 +28,9 @@ def user_registration():
     return render_template('pages/user_registration.html')
 
 
+@app.route("/user_create_profile")
+def user_profile_create():
+    return render_template('pages/user_create_profile.html')
 
 
 if __name__ == "__main__":
