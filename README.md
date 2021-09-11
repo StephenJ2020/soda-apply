@@ -172,7 +172,39 @@ The app should employ features for accessibility inline with the User Story requ
 
 #### Wireframes
 ------
-**(examples to be added when complete, to include notes on which UX elements are addressing accessibility issues )**
+* Wireframes were created using the [Balsamiq](https://balsamiq.com/wireframes/) software.
+
+**Home Page**
+
+![Home](docs/wireframes/Home.png)
+
+* The Home page features a Hero Image with a call to action, prompting users to create an account with SODA Apply.
+* The About US sections allows users to get to know us and immediately know that accessability is our number one priority.
+* Using Roboto font, a monochromatic color palette and lots of white space provide demonstrate an accessible appearance.
+
+
+**Profile Page**
+
+![Profile](docs/wireframes/Profile.png)
+
+* The profile page is designed to be a scrollable page with easy access to the various sections.
+* Links to all sections are at the top of the profile page with back-to-top links.
+
+
+All wireframes.
+* [Home](docs/wireframes/Home.png)
+* [Profile](docs/wireframes/Profile.png)
+* [Jobs](docs/wireframes/Jobs.png)
+* [Job-Details](docs/Job-Details/Profile.png)
+* [Register](docs/wireframes/Register.png)
+* [Log In](docs/wireframes/login.png)
+* [Contact Us](docs/wireframes/Contact-us.png)
+* [FAQ](docs/wireframes/FAQ.png)
+
+A pdf of the wireframes can be found [here](doc/wireframes/soda-apply_wireframes.pdf), by clicking on the download button in Github. (**Please Note:** _[Adobe Acrobat Reader](https://get.adobe.com/reader/) is required to view files in pdf format_).
+
+#### [Back to top](<#table-of-content>)
+
 
 #### Design Inspiration & Colour choices
 ------
