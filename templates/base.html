@@ -24,13 +24,25 @@
 
         <!-- Footer component injected here -->
 
-
-        <!-- External Library/Framework JS links -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.1/js/bootstrap.min.js"
+{% block scripts %}
+    <!-- External Library/Framework JS links -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.1/js/bootstrap.min.js"
         integrity="sha512-ewfXo9Gq53e1q1+WDTjaHAGZ8UvCWq0eXONhwDuIoaH8xz2r96uoAYaQCm1oQhnBfRXrvJztNXFsTloJfgbL5Q=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
         <!-- Project Custom JS link -->
-        <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+          <!-- Project Custom Email Js Scripts -->
+    <script type="text/javascript"
+    src="https://cdn.jsdelivr.net/npm/emailjs-com@2/dist/email.min.js">
+    </script>
+    <script type="text/javascript">
+        (function(){
+            emailjs.init("user_BtPrQACRqfDPJCsLUki56");
+        })();
+    </script>    
+    <script src="{{ url_for('static', filename='js/emailjs.js')}}"></script>
+    {% endblock %}
+
         
-    </body>
+</body>
 </html>

@@ -14,3 +14,10 @@ function sendMail(contactForm) {
     );
     return false;  // To block from loading a new page
 }
+
+// contact form
+$('#contactform').submit(function (e) {
+    e.preventDefault();
+    $('#staticBackdrop').modal('show');
+    $('#contactform')[0].reset();
+});
