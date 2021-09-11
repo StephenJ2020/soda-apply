@@ -34,7 +34,7 @@ def user_profile_create():
 
 @app.route("/contact")
 def contact():
-    return render_template('pages/contact-us.html')
+    return render_template('contact.html')
 
 
 if __name__ == "__main__":

@@ -3,7 +3,7 @@
 {% block content %}
    
 <div class="contactusForm">
-    <form id="contactform" onsubmit="return sendMail(this);">
+    <form id="contact-form">
        <!--First Name-->
        <div class="mb-3">
           <label for="fname" class="form-label">First Name</label>
@@ -21,25 +21,28 @@
           <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
        </div>
        <!--Message-->
-       <div class="form-floating">
-          <textarea class="form-control" placeholder="Leave a comment here" id="message" name="message" style="height: 100px"></textarea>
-          <label for="message">Message</label>
+       <div class="mb-3">
+         <label for="message" class="form-label">Message</label>
+          <textarea class="form-control" placeholder="Leave a comment here" id="message" name="message" type="text" style="height: 100px"></textarea>
+         
        </div>
     
        <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-   Submit
- </button>
+      <button type="submit" id="send" name="send" value="send" data-bs-toggle="modal" data-bs-target="#exampleModal"> Submit</button>
+    </form>
+</div>
  
- <!-- Modal -->
+  <!-- Modal -->
    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-      <div class="modal-dialog">    
+      <div class="modal-dialog"> 
+         <div class="modal-content">  
          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Messsage sent successfully!</h5>
+            <h5 class="modal-title" id="exampleModalLabel">Message sent successfully!</h5>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-         </div>     
+         </div>    
       </div>
    </div>
-</div>
+</div>  
+ 
 
 {% endblock %}
