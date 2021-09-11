@@ -10,6 +10,13 @@ def index():
     return render_template('pages/index.html')
 
 
+@app.route("/user_registration")
+def user_registration():
+    return render_template('pages/user_registration.html')
+
+
+
+
 if __name__ == "__main__":
     app.run(
         host = os.environ.get('IP', '127.0.0.1'),
