@@ -33,6 +33,15 @@ def user_profile_create():
     return render_template('pages/user_create_profile.html')
 
 
+@app.route("/job_listings")
+def job_listings():
+    """
+    Allow users to see all job listings
+    """
+    jobs = list(mongo.db.jobs.find())
+    return render_template('pages/job_listings.html', jobs=jobs,)
+
+
 if __name__ == "__main__":
     app.run(
         host = os.environ.get('IP'),

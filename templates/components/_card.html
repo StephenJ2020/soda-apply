@@ -1,0 +1,41 @@
+<div class="card text-dark hover-shadow-light border-rounded">
+
+    <!-- Listing Headers -->
+    <div class="card-header fs-1">Graduate Software Developer</div>
+    <div class="card-body">
+        <p class="card-job-provider fs-3 pt-4">Employer: <span class="px-4">Code Institute Ireland</span></p>
+        <p class="card-salary fs-3">Salary: <span class="px-4">£28,000 per year</span></p>
+
+        <!-- Employment Details -->
+        <p>Employment Details: </p>
+
+            <div class="card-job-details">
+                <ul>
+                    <li>Example 1: Carry out enhancements to existing applications</li>
+                    <li>Example 2: Develop and implement new applications and products</li>
+                </ul>
+            </div>
+
+    </div>
+</div>
+
+<div class="card text-dark mb-3 hover-shadow-light border-rounded">
+
+    <!-- Listing Headers -->
+    <div class="card-header fs-1">{{ job.role }}</div>
+    <div class="card-body">
+        <p class="card-job-provider fs-3 pt-4">Employer: <span class="px-4">{{ job.employer }}</span></p>
+        <p class="card-salary fs-3">Salary: <span class="px-4">{{job.salary}} per year</span></p>
+
+        <!-- Employment Details -->
+        <p>Employment Details: </p>
+        <div class="card-job-details">
+            <ul>
+            {% for detail in job.employment_details%}
+                    <li>{{ detail }}</li>
+            {% endfor %}
+            </ul>
+        </div>
+
+    </div>
+</div>

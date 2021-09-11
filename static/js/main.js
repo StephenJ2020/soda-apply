@@ -28,7 +28,7 @@ switch (current_page) {
             navLinks[0].setAttribute('aria-current-page', 'page');
         }
         break;
-    case '/jobs':
+    case '/job_listings':
         activeId = navLink_ids[1];
 
         if (navLink_ids.includes(activeId)) {
