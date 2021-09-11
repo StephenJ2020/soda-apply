@@ -32,10 +32,12 @@ def user_registration():
 def user_profile_create():
     return render_template('pages/user_create_profile.html')
 
+@app.route("/contact")
+def contact():
+    return render_template('contact.html', page_title="Contact Us")
+
 
 if __name__ == "__main__":
-    app.run(
-        host = os.environ.get('IP'),
-        port = os.environ.get('PORT'),
-        debug = True
-    )
+    app.run(host=os.environ.get("IP"),
+            port=int(os.environ.get("PORT")),
+            debug=True)  # change to False before submitting
