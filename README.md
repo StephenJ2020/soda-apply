@@ -120,11 +120,22 @@ As part of the Trust in Soda Hackathon with the Code Institute, the following br
 * Partners page to list recruitment partners 
 * Contact us ability 
 
+### Accessibility Specific & a11y features
+------
+
+* Accessify testing
+* Accesslint:
+How it works
+AccessLint brings automated web accessibility testing into your development workflow. When a pull request is opened, AccessLint reviews the changes and comments with any new accessibility issues, giving you quick, timely, and targeted feedback, before code goes live.
+* Lighthouse accessibility will also be an key factor in assessing the app.
+
 #### Security
 ------
 The profile pages should only have edit and delete functionalities for:
 * Admin / superuser
 * Profile creator
+* Werkzeug will be used for password hashing
+* Sessions will be used 
 
 Others should not be able to access the profile (for example by url). 
 
