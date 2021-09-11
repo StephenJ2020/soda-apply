@@ -1,12 +1,21 @@
 import os
-from flask import Flask, flash, render_template,
-redirect, request, session, url_for
-
+from flask import (Flask, flash, render_template,
+redirect, request, session, url_for)
+from flask_pymongo import PyMongo
+from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
+if os.path.exists("env.py"):
+    import env
 
 app = Flask(__name__)
 
-user = mongo.db.users.find_one(
-        {"_id": ObjectId(user)})
+app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.secret_key = os.environ.get("SECRET_KEY")
+
+mongo = PyMongo(app)
+
+#user = mongo.db.users.find_one()
 
 
 @app.route("/")
@@ -14,18 +23,21 @@ def index():
     return render_template('pages/index.html')
 
 
-@app.route("/user_registration")
+@app.route("/user_registration", methods=["GET", "POST"])
 def user_registration():
-
     if request.method == "POST":
-        
+
+        existing_user = mongo.db.users.find_one(
+            {"full_name": request.form.get("full_name").lower()})
+
+        if existing_user:
+            flash("Username already exists")
+            return redirect(url_for("user_registration"))
         user_registration = {
-            #user object goes here check agains DB before PR
-            "full_name": request.form.get("full_name"),
+            "full_name": request.form.get("full_name").lower(),
             "email": request.form.get("email"),
             "password": generate_password_hash(request.form.get("password")),
-            #password2 - not sure how to use this - does it get created here?
-            "created_at": #timestamp - not sure how to implement,
+            #"created_at": datetime.datetime.utcnow(),
             "about": "",
             "company_name": "",
             "role_title": "",
@@ -45,14 +57,15 @@ def user_registration():
         session["user"] = request.form.get("full_name").lower()
 
         flash("Thanks for joining Soda-Apply!") #should we add another step here for 'proceed to create profile'?
-        return redirect(url_for("user_create_profile", user_name=session["user"]))
+        return redirect(url_for("user_create_profile", user=session["user"]))
 
     return render_template('pages/user_registration.html')
 
 
-@app.route("/user_create_profile/<user>")
+@app.route("/user_create_profile", methods=["GET", "POST"])
 def user_create_profile(user):
-    if request.method == "POST"
+    if request.method == "POST":
+        user=session["user"]
         personalise_details = {"$set": {
             "about": request.form.get("about"),
             "company_name": request.form.get("company_name"),
@@ -67,10 +80,8 @@ def user_create_profile(user):
         }}
         mongo.db.users.update_one(
             {"_id": ObjectId(user)}, personalise_details, upsert=True) 
-
-
-    return render_template('pages/user_create_profile.html', user=user)
-
+        
+    return render_template('pages/user_create_profile.html', user=session["user"])
 
 
 @app.route("/user_edit_profile<user>")
@@ -80,7 +91,7 @@ def user_edit_profile():
 
 if __name__ == "__main__":
     app.run(
-        host = os.environ.get('IP', '127.0.0.1'),
-        port = os.environ.get('PORT', '5000'),
+        host = os.environ.get('IP'),
+        port = os.environ.get('PORT'),
         debug = True
     )
