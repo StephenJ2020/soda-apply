@@ -1,3 +1,4 @@
+  
 /* Root variables & imports */
 @import url('https://fonts.googleapis.com/css2?family=Arvo&family=Roboto&display=swap');
 
@@ -11,6 +12,10 @@
     --content-text: 'Roboto', sans-serif;
 
     /* Colors */
+    --dk-color: #1e1e1e;
+    --p1-color: #FFEBEA;
+    --s1-color: #f0452b;
+    --t1-color: #B57270;
 }
 
 /* Global styles */
@@ -26,9 +31,56 @@ body {
     font-family: var(--content-text);
 }
 
+    /* Navbar */
+.bg-custom {
+    background-color: var(--p1-color);
+}
+
+.navbar-brand img {
+    width: 50%;
+}
+
+.navbar-collapse {
+    text-align: center;
+}
+
+.navbar .navbar-nav .nav-link.active {
+    color: var(--s1-color);
+}
+
+.navbar .navbar-nav .nav-link.active:after {
+    content: '';
+    display: block;
+    width: 4rem;
+    height: 2px;
+    margin: 0 auto;
+    background-color: var(--dk-color);
+    transform-origin: 0%;
+    animation: line-grow 0.5s ease-in;
+}
+
+@keyframes line-grow {
+    from {
+        transform: scaleX(0);
+        opacity: 0;
+    }
+
+    to {
+        transform: scaleX(1);
+        opacity: 1;
+    }
+}
+
+.navbar-toggler {
+    font-size: 2.5rem;
+    margin-right: 1.5rem;
+}
+
+    /* Footer */
+footer {
+    background-color: var(--t1-color);
+}
+
 h1 {
     font-family: var(--header-text);
 }
-
-
-
