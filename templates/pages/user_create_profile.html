@@ -2,9 +2,9 @@
 
 {% block content %}
 
-<form>
+<form method="POST" action="{{ url_for('user_create_profile') }}">
   <!--About Section-->
-  
+
   <h2>About Me </h2>
     <div class="input-group">
         <span class="input-group-text">About Me</span>
