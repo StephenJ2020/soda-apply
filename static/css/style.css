@@ -119,10 +119,19 @@ h1 {
     padding-top: 3rem;
 }
 
+.btn-lg {
+    padding: .5rem 1.5rem !important;
+    font-size: 1.5rem !important;
+}
 /*===== Card Styling =====*/
 
 .card {
     margin-bottom: 4rem;
+}
+
+.card .cta {
+    text-align: center;
+    padding-top: 1rem;
 }
 
 .card-header {

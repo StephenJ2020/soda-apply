@@ -10,14 +10,17 @@
         <p>Employment Details: </p>
         <div class="card-job-details">
             <ul>
-            {% for detail in job.employment_details%}
-                    <li>{{ detail }}</li>
+            {% for item in job.employment %}
+                    <li>{{ item }}</li>
             {% endfor %}
             </ul>
         </div>
 
         <!-- CTA Button -->
-        <a href="{{ url_for('job_details', job_id=job._id) }}" class="text-center btn btn-lg btn-outline-dark">Click Me!</a>
+        <div class="cta">
+            <a href="{{ url_for('job_details', job_id=job._id) }}" 
+                class="text-center rounded-pill btn btn-lg btn-outline-dark">SODApply</a>
+        </div>
 
     </div>
 </div>
