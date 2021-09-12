@@ -138,6 +138,12 @@ def login():
     return render_template('pages/login.html')
 
 
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for("login"))
+
+
 @app.route("/contact")
 def contact():
     return render_template('pages/contact.html', page_title="Contact Us")
