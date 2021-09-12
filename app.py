@@ -33,14 +33,14 @@ def index():
 @app.route("/user_registration", methods=["GET", "POST"])
 def user_registration():
     if request.method == "POST":
-
         existing_user = mongo.db.users.find_one(
             {"email": request.form.get("email").lower()})
 
         if existing_user:
             flash("Email already exists")
             return redirect(url_for("user_registration"))
-        user_registration = {
+
+        registration = {
             "full_name": request.form.get("full_name").lower(),
             "email": request.form.get("email"),
             "password": generate_password_hash(request.form.get("password")),
@@ -54,26 +54,26 @@ def user_registration():
             "skills_competencies": [],
             "institute_name": "",
             "course_title": "",
-            "diploma result": "",
+            "diploma_result": "",
             "jobs_applied":[]
         }
-        mongo.db.users.insert_one(user_registration)
+        mongo.db.users.insert_one(registration)
         """
         start a session for the user with a session cookie
         """
         session["user"] = request.form.get("email").lower()
 
-        flash("Thanks for joining Soda-Apply!") #should we add another step here for 'proceed to create profile'?
-        return redirect(url_for("user_create_profile", user=session["user"]))
+        flash("Thanks for joining Soda-Apply!")
+        return redirect(url_for("user_create_profile", user=session["user_id"]))
 
     return render_template('pages/user_registration.html')
 
 
-@app.route("/user_create_profile/<user>", methods=["GET", "POST"])
-def user_create_profile(user):
+@app.route("/user_create_profile/<user_id>", methods=["GET", "POST"])
+def user_create_profile(user_id):  
     if request.method == "POST":
         user = mongo.db.users.find_one(
-        {"_id": session["user"]})
+            {"_id": session["user"]})
 
         personalise_details = {"$set": {
             "about": request.form.get("about"),
@@ -85,13 +85,17 @@ def user_create_profile(user):
             "skills_competencies": request.form.getlist("skills_competencies"),
             "institute_name": request.form.get("institute_name"),
             "course_title": request.form.get("course_title"),
-            "diploma result": request.form.get("diploma_result")
+            "diploma_result": request.form.get("diploma_result")
         }}
         mongo.db.users.update_one(
-            {"_id": ObjectId(user)}, personalise_details, upsert=True) 
-        
+            {"_id": ObjectId(user)}, personalise_details)
+        flash("thanks for personalising your Soda-Apply profile.")
     return render_template('pages/user_create_profile.html', user=user)
 
+
+@app.route("/profile/<user>")
+def profile(user):
+    return render_template('pages/profile.html', user=user)
 
 @app.route("/user_edit_profile<user>")
 def user_edit_profile():
