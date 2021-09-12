@@ -69,3 +69,4 @@ switch (current_page) {
         }
         break;  
 };
+

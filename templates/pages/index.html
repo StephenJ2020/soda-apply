@@ -1,18 +1,54 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container">
-        <h1>Welcome to SODA apply</h1>
-        <div class="row align-items-center">
-            <div class="col">
-                <h2>One of three columns</h2>
-            </div>
-            <div class="col">
-                One of three columns
-            </div>
-            <div class="col">
-                One of three columns
-            </div>
-        </div>
+
+<div class="container">
+    <h1>Welcome to SODA apply</h1>
+    <div class="row align-items-center">
+       <div class="col">
+          <h2>One of three columns</h2>
+       </div>
+       <div class="col">
+          One of three columns
+       </div>
+       <div class="col">
+          One of three columns
+       </div>
     </div>
+ </div>
+ <!-- Partners section-->
+ 
+ <div class="container partners">
+    <h2>Our Partners</h2>
+    <div class="row">
+       {% for partner in partners %} 
+       {% if loop.index <=3 %}
+       <div class="col-lg-4" data-bs-interval="10000">
+          <div class="col">
+             <div class="col-sm">
+                <div class="card mb-3" style="max-height: 400px;">
+                   <div class="row g-0">
+                      <div class="col-md-4">
+                         <img src="{{partner.image_url}}" class="img-fluid rounded-start" alt="...">
+                      </div>
+                      <div class="col-md-8">
+                         <div class="card-body">
+                            <h3 class="card-title"><strong>{{partner.company_name}}</strong></h3>
+                            <p class="card-text">{{partner.description}}</p>
+                            <h2><strong>Testimonials:</strong></h2>
+                            <p class="card-text">{{partner.testimonials}}</p>
+                            <p class="card-text"><small class="text-muted">Rating: {{partner.rating}}</small></p>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       {% endif %}
+       {% endfor %}
+    </div>
+ </div>
+
 {% endblock %}
+

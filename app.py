@@ -1,4 +1,6 @@
 import os
+import json
+import random
 from flask import (
     Flask, render_template, flash, redirect,
     request, session, url_for)
@@ -20,7 +22,11 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def index():
-    return render_template('pages/index.html')
+    partnerdata = []    
+    with open("data/partner.json", "r") as json_partnerdata:
+        partnerdata = json.load(json_partnerdata)
+        random.shuffle(partnerdata)
+    return render_template('pages/index.html', partners=partnerdata)
 
 
 @app.route("/user_registration")
@@ -31,6 +37,7 @@ def user_registration():
 @app.route("/user_create_profile")
 def user_profile_create():
     return render_template('pages/user_create_profile.html')
+
 
 @app.route("/contact")
 def contact():
