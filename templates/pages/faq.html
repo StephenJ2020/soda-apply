@@ -1,0 +1,109 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="accordion" id="accordionPanelsStayOpenExample">
+    <!--What is SODA Apply-->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+            What is SODA Apply
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+        <div class="accordion-body">
+          <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        </div>
+      </div>
+    </div>
+    <!--How do I know if I need SODA Apply-->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="panelsStayOpen-headingTwo">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseTwo" aria-expanded="false" aria-controls="panelsStayOpen-collapseTwo">
+            How do I know if I need to use SODA Apply?
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseTwo" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingTwo">
+        <div class="accordion-body">
+           <strong>SODA apply</strong> is not just technology-specific. Our aim is to cover many more aspects of disabilities, 
+            including blindness and low vision, deafness and hearing loss, learning disabilities, cognitive limitations, 
+            limited movement, speech disabilities, photosensitivity, and more.
+
+            As we all know, the WCAG guidelines can get really complicated, really fast…so for newbies, I try to focus 
+            on the actionable parts of the guidelines, namely the P.O.U.R. concepts – Perceivable, Operable, Understandable,
+            and Robust.
+            
+            SODA Apply aims to  focus on the actionable parts of the guidelines, 
+            namely the P.O.U.R. concepts – Perceivable, Operable, Understandable, and Robust.
+            
+            The first category in P.O.U.R. is<strong> Perceivable.</strong> This means that users must be able to perceive 
+            the information being presented – it cannot be invisible to all of their senses.
+            
+            The second category is<strong> Operable.</strong> Users must be able to operate the interface – the interface 
+            cannot require interaction that a user cannot perform.
+            
+            The third category is<strong> Understandable.</strong> Users must be able to understand the information 
+            as well as the operation of the user interface – the content or operation cannot be beyond their understanding.
+            
+            The last category is <strong> Robust.</strong> It means that users must be able to access the content as 
+            technologies advance – as technologies and user agents evolve, the content should remain accessible.
+
+            More information about these guidelines can be found<a href="(https://webaim.org/articles/pour/)"> here.</a>
+        </div>
+      </div>
+    </div>
+    <!--What is digital accessibility-->
+    <div class="accordion-item">
+      <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+            what is web/digital accessibility?
+        </button>
+      </h2>
+      <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+        <div class="accordion-body">
+            Web accessibility is an inclusive practice which ensures a barrier free user experience for every person 
+            navigating the world wide web. Accessible websites are created with inclusive design in mind and contain 
+            content that can be accessed by anyone, regardless of disability, difference or language. 
+            You can learn more by taking a look <a href="(https://www.a11yproject.com/)"> here</a>
+        </div>
+      </div>
+    </div>
+    <!--What is WCAG-->
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+            What is WCAG?
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+          <div class="accordion-body">
+           <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">WCAG </a>(Web Content Accessibility Guidelines) 
+           is the internationally recognised standard for web accessibility. 
+           It’s part of a series of web accessibility guidelines published by the Web Accessibility Initiative (WAI), 
+           and they outline how organisations can make their web content accessible to every type of user. 
+          </div>
+        </div>
+      </div>
+      <!--What is SODA Apply-->
+      <div class="accordion-item">
+        <h2 class="accordion-header" id="panelsStayOpen-headingThree">
+          <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseThree" aria-expanded="false" aria-controls="panelsStayOpen-collapseThree">
+            What is ARIA and do I really need it?
+          </button>
+        </h2>
+        <div id="panelsStayOpen-collapseThree" class="accordion-collapse collapse" aria-labelledby="panelsStayOpen-headingThree">
+          <div class="accordion-body">           
+           <a href="https://www.w3.org/WAI/standards-guidelines/aria/"> ARIA</a> is a technical specification published by the World Wide Web Consortium (W3C) 
+           that specifies how to make web content and web applications more accessible to people with disabilities. 
+           It is particularly useful for dynamic content and advanced user interface components developed with Ajax, HTML, JavaScript, and related technologies.
+
+           “ARIA is extremely useful if your website has a lot of dynamically changing content. 
+           If it’s a web application then it’s a must. ARIA layers on a lot of useful behaviour for screen reader 
+           users and can make all the difference between an unusable site and a very well-supported experience 
+           for blind users.” - Robin Christopherson, Head of Digital Inclusion at AbilityNet.            
+          </div>
+        </div>
+      </div>
+</div>
+
+{% endblock %}
