@@ -25,7 +25,7 @@ switch (current_page) {
 
         if (navLink_ids.includes(activeId)) {
             navLinks[0].classList.add('active');
-            navLinks[0].setAttribute('aria-current-page', 'page');
+            navLinks[0].setAttribute('aria-current', 'page');
         }
         break;
     case '/jobs':
@@ -33,7 +33,7 @@ switch (current_page) {
 
         if (navLink_ids.includes(activeId)) {
             navLinks[1].classList.add('active');
-            navLinks[1].setAttribute('aria-current-page', 'page');
+            navLinks[1].setAttribute('aria-current', 'page');
         }
         break;
     case '/profile':
@@ -41,7 +41,7 @@ switch (current_page) {
 
         if (navLink_ids.includes(activeId)) {
             navLinks[2].classList.add('active');
-            navLinks[2].setAttribute('aria-current-page', 'page');
+            navLinks[2].setAttribute('aria-current', 'page');
         }
         break;
     case '/user_registration':
@@ -49,7 +49,7 @@ switch (current_page) {
 
         if (navLink_ids.includes(activeId)) {
             navLinks[3].classList.add('active');
-            navLinks[3].setAttribute('aria-current-page', 'page');
+            navLinks[3].setAttribute('aria-current', 'page');
         }
         break;
     case '/login':
@@ -57,7 +57,7 @@ switch (current_page) {
 
         if (navLink_ids.includes(activeId)) {
             navLinks[4].classList.add('active');
-            navLinks[4].setAttribute('aria-current-page', 'page');
+            navLinks[4].setAttribute('aria-current', 'page');
         }
         break;
     default:
@@ -65,7 +65,7 @@ switch (current_page) {
 
         if (navLink_ids.includes(activeId)) {
             navLinks[5].classList.add('active');
-            navLinks[5].setAttribute('aria-current-page', 'page');
+            navLinks[5].setAttribute('aria-current', 'page');
         }
         break;  
 };

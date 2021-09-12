@@ -1,10 +1,89 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+<svg class="footer-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
     <path fill="#B57270" fill-opacity="1" d="M0,64L24,74.7C48,85,96,107,144,133.3C192,160,240,192,288,181.3C336,171,384,117,432,106.7C480,96,528,128,576,144C624,160,672,160,720,160C768,160,816,160,864,160C912,160,960,160,1008,154.7C1056,149,1104,139,1152,122.7C1200,107,1248,85,1296,85.3C1344,85,1392,107,1416,117.3L1440,128L1440,320L1416,320C1392,320,1344,320,1296,320C1248,320,1200,320,1152,320C1104,320,1056,320,1008,320C960,320,912,320,864,320C816,320,768,320,720,320C672,320,624,320,576,320C528,320,480,320,432,320C384,320,336,320,288,320C240,320,192,320,144,320C96,320,48,320,24,320L0,320Z"></path>
 </svg>
 
 <footer class="container-fluid">
     <div class="row">
-        <div class="col-sm-12 col-lg-6">Test</div>
-        <div class="col-sm-12 col-lg-6">Test</div>
+        <div class="col-sm-12 col-md-2">
+            <h3 class="footer-title header-underline">Quick Links</h3>
+            <ul id="quick-links">
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('index') }}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">FAQs</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Acessibility</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Privacy</a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-sm-12 col-md-8 footer-text">
+            <h3 class="footer-title header-underline">Connecting Accessibility</h3>
+            <p class="my-4">
+                Advocating for accessibility being one of our core beliefs as a team, gave us
+                incredible insight allowing us to build this plug-in application. Giving potential
+                candidates and recruiters the opportunity to meet almost seemlessly, and most of all,
+                keeping Ease of Accessibility at the forefront of the recruitment process.
+            </p>
+            <p class="my-4">
+                Our team wanted to encompass accessibility too, and not just leave it end with
+                the scope of this web application. Click on the social media icons to get
+                connected with us! And be part of bringing Accessibility to the foregrounds.
+            </p>
+        </div>
+        <div class="col-sm-12 col-md-2">
+            <h3 class="footer-title header-underline">Dev Team</h3>
+            <ul id="dev-links">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/GJSayers" target=_blank>Gemma</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/wyne-ybanez" target=_blank>Wyne</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/Joan-Amudu" target=_blank>Joan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/StephenJ2020" target=_blank>Stephen</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://github.com/auxfuse" target=_blank>Anthony</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div class="row social-links-row">
+        <div class="col-sm-12">
+            <ul class="social-links">
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.twitter.com" target=_blank>
+                        <svg class="social-svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm6.5 8.778c-.441.196-.916.328-1.414.388.509-.305.898-.787 1.083-1.362-.476.282-1.003.487-1.564.597-.448-.479-1.089-.778-1.796-.778-1.59 0-2.758 1.483-2.399 3.023-2.045-.103-3.86-1.083-5.074-2.572-.645 1.106-.334 2.554.762 3.287-.403-.013-.782-.124-1.114-.308-.027 1.14.791 2.207 1.975 2.445-.346.094-.726.116-1.112.042.313.978 1.224 1.689 2.3 1.709-1.037.812-2.34 1.175-3.647 1.021 1.09.699 2.383 1.106 3.773 1.106 4.572 0 7.154-3.861 6.998-7.324.482-.346.899-.78 1.229-1.274z"/>
+                        </svg>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.linkedin.com" target=_blank>
+                        <svg class="social-svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M12 2c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm-2 8c0 .557-.447 1.008-1 1.008s-1-.45-1-1.008c0-.557.447-1.008 1-1.008s1 .452 1 1.008zm0 2h-2v6h2v-6zm3 0h-2v6h2v-2.861c0-1.722 2.002-1.881 2.002 0v2.861h1.998v-3.359c0-3.284-3.128-3.164-4-1.548v-1.093z"/>
+                        </svg>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="https://www.youtube.com" target=_blank>
+                        <svg class="social-svg-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                            <path d="M16.23 7.102c-2.002-.136-6.462-.135-8.461 0-2.165.148-2.419 1.456-2.436 4.898.017 3.436.27 4.75 2.437 4.898 1.999.135 6.459.136 8.461 0 2.165-.148 2.42-1.457 2.437-4.898-.018-3.436-.271-4.75-2.438-4.898zm-6.23 7.12v-4.444l4.778 2.218-4.778 2.226zm2-12.222c5.514 0 10 4.486 10 10s-4.486 10-10 10-10-4.486-10-10 4.486-10 10-10zm0-2c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12z"/>
+                        </svg>
+                    </a>
+                </li>
+            </ul>
+        </div>
     </div>
 </footer>
