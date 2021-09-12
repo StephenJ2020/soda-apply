@@ -56,6 +56,11 @@ def job_details(job_id):
     return render_template('pages/job_details.html', jobs=jobs, job=job,)
 
 
+@app.route("/accessibility")
+def accessibility():
+    return render_template('pages/accessibility.html', page_title="Accessibility Statement")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
