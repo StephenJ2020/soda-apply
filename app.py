@@ -91,9 +91,45 @@ def user_create_profile():
     return render_template('pages/user_create_profile.html', user=session["user"])
 
 
-@app.route("/user_edit_profile<user>")
+@app.route("/user_edit_profile")
 def user_edit_profile():
     return render_template('pages/user_edit_profile.html')
+
+
+@app.route("/login")
+def login():
+    if request.method == "POST":
+        """
+        checks if user is already a member in the database
+        """
+        existing_user = mongo.db.users.find_one(
+            {"full_name": request.form.get("full_name").lower()})
+        
+        if existing_user:
+            """
+            checks password is correct
+            """
+            if check_password_hash(
+                    existing_user["password"], request.form.get(
+                        "password")):
+                session["user"] = request.form.get("full_name").lower()
+                return redirect(url_for(
+                    "profile", full_name=session["user"]))
+
+            else:
+                """
+                if password invalid
+                """
+                flash("Invalid password and / or username")
+                return redirect(url_for("login"))
+        else:
+            """
+            if username invalid
+            """
+            flash("Invalid password and / or username")
+            return redirect(url_for("login"))
+
+    return render_template('pages/login.html')
 
 @app.route("/contact")
 def contact():
