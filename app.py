@@ -32,6 +32,7 @@ def user_registration():
 def user_profile_create():
     return render_template('pages/user_create_profile.html')
 
+
 @app.route("/contact")
 def contact():
     return render_template('pages/contact.html', page_title="Contact Us")
@@ -54,6 +55,23 @@ def job_details(job_id):
     job = mongo.db.jobs.find_one({'_id': ObjectId(job_id)})
     jobs = list(mongo.db.jobs.find())
     return render_template('pages/job_details.html', jobs=jobs, job=job,)
+
+
+# Error handlers
+@app.errorhandler(404)
+def response_404(exception):
+    """
+    On 404 detection, display custom 404.html template to user
+    """
+    return render_template('pages.404.html', exception=exception)
+
+
+@app.errorhandler(500)
+def response_500(exception):
+    """
+    On 500 detection, display custom 500.html template to user
+    """
+    return render_template('pages.500.html', exception=exception)
 
 
 if __name__ == "__main__":
