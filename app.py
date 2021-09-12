@@ -100,6 +100,25 @@ def contact():
     return render_template('contact.html', page_title="Contact Us")
 
 
+@app.route("/job_listings")
+def job_listings():
+    """
+    Allow users to see all job listings
+    """
+    jobs = list(mongo.db.jobs.find())
+    return render_template('pages/job_listings.html', jobs=jobs,)
+
+
+@app.route("/job_details/<job_id>", methods=['GET', 'POST'])
+def job_details(job_id):
+    """
+    Allow user to view the complete job description
+    """
+    job = mongo.db.jobs.find_one({'_id': ObjectId(job_id)})
+    jobs = list(mongo.db.jobs.find())
+    return render_template('pages/job_details.html', jobs=jobs, job=job,)
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
