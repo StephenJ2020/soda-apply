@@ -78,3 +78,9 @@ body {
 h1 {
     font-family: var(--header-text);
 }
+
+
+ /* contact */
+.content-header {
+    text-align: center;
+}
