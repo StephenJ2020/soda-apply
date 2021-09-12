@@ -1,6 +1,8 @@
 import os
-from flask import (Flask, flash, render_template,
-redirect, request, session, url_for)
+import json
+from flask import (
+    Flask, render_template, flash, redirect,
+    request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -103,7 +105,7 @@ def user_edit_profile():
 
 @app.route("/contact")
 def contact():
-    return render_template('contact.html', page_title="Contact Us")
+    return render_template('pages/contact.html', page_title="Contact Us")
 
 
 @app.route("/job_listings")
