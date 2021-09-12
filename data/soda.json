@@ -1,0 +1,35 @@
+[
+    {
+        "question": "What is SODA Apply",
+        "answer": "SODA Apply is an inclusive recruitment agency focused on social impact and inclusivity. Many people with disabilities face significant difficulties in finding employment. However, technology has the ability to create an accessible solution. Small changes can be fundamental in making a difference and removing barriers to accessibility."
+      
+    },
+    {
+        "question": "How do I know if I need to use SODA Apply?",
+        "answer": "SODA apply is not just technology-specific. Our aim is to cover many more aspects of disabilities, including blindness and low vision, deafness and hearing loss, learning disabilities, cognitive limitations, limited movement, speech disabilities, photosensitivity, and more."
+    },
+    {
+        "question": "How does SODA Apply work?",
+        "answer": "With SODA Apply, you create a user profile which contains all your professional informaton. You can apply for jobs after completing your profile with just a click of the button"
+        
+    },
+    {
+        "question": "How to get started with SODA Apply?",
+        "answer": "You will need a user profile with SODA Apply. Simply fill out the registration form and upon registration, you will be directed to a user profile page where you can add your information"
+        
+    },
+    {
+        "question": "What is web/digital accessibility?",
+        "answer": "Web accessibility is an inclusive practice which ensures a barrier free user experience for every person navigating the world wide web. Accessible websites are created with inclusive design in mind and contain content that can be accessed by anyone, regardless of disability, difference or language."
+    },
+    {
+        "question": "What is WCAG?",
+        "answer": "WCAG 2.1 (Web Content Accessibility Guidelines) is the internationally recognised standard for web accessibility. It’s part of a series of web accessibility guidelines published by the Web Accessibility Initiative (WAI), and they outline how organisations can make their web content accessible to every type of user."
+    },
+    {
+        "question": "What is ARIA and do I really need it?",
+        "answer": "ARIA is a technical specification published by the World Wide Web Consortium (W3C) that specifies how to make web content and web applications more accessible to people with disabilities. It is particularly useful for dynamic content and advanced user interface components developed with Ajax, HTML, JavaScript, and related technologies."
+    }
+
+
+]

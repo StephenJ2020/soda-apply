@@ -1,4 +1,5 @@
 import os
+import json
 from flask import (
     Flask, render_template, flash, redirect,
     request, session, url_for)
@@ -38,7 +39,10 @@ def contact():
 
 @app.route("/faq")
 def faq():
-    return render_template('pages/faq.html', page_title="FAQ's")
+    data = []
+    with open("data/soda.json", "r") as json_data:
+        data = json.load(json_data)
+    return render_template('pages/faq.html', page_title="Frequently Asked Questions", soda=data)
 
 
 if __name__ == "__main__":
