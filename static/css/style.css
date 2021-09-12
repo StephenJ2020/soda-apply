@@ -94,6 +94,31 @@ h1 {
     transition: ease;
 }
 
+/*===== Job Details Page =====*/
+
+.job_details {
+    height: 100%;
+    margin-bottom: 15rem;
+}
+
+.employer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 20vw 1rem 20vw;
+}
+
+.job-details-section p,
+.job-details-section h3 {
+    padding-left: 10vw;
+    padding-right: 10vw;
+    white-space: pre-line;
+}
+
+.job-type {
+    padding-top: 3rem;
+}
+
 /*===== Card Styling =====*/
 
 .card {

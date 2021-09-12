@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="job_details">
+    <h1 class="text-center">{{job.role}}</h1>
+
+    <!-- Employer details -->
+    <div class="employer-details text-center">
+        <p class="fs-3 employer">
+            {{ job.employer }} <br>
+            {{ job.location }} 
+        </p>
+        <a href="#" class="btn rounded-pill btn-lg btn-outline-dark">Apply With Soda</a>
+    </div>
+
+    <!-- Job description -->
+    <div class="job-details-section">
+        <p class="job-details">
+            {{ job.employment_details[0] }}
+        </p>
+
+        <p class="responsibilities">
+            <span class="fs-2">Responsibilities:</span>
+            {{ job.employment_details[1] }}
+        </p>
+
+        <p class="skills">
+            <span class="fs-2">Key skills/Knowledge:</span>
+            {{ job.employment_details[2] }}
+        </p>
+
+        <p class="perks">
+            <span class="fs-2">Perks:</span>
+            {{ job.employment_details[3] }}
+        </p>
+
+        <p class="benefits">
+            <span class="fs-2">Benefits in Dublin Office:</span>
+            {{ job.employment_details[4] }}
+        </p>
+
+        <!-- Footer description -->
+        <h3 class="job-type">Job Type: <span class="ps-3">{{ job.salary[1] }}</span></h3>
+        <h3 class="job-salary">Salary: <span class="ps-3">{{ job.salary[0] }} per year</span></h3>
+        <h3 class="schedule">Schedule: <span class="ps-3">{{ job.schedule }}</span></h3>
+    </div>
+</div>
+{% endblock %}
