@@ -18,6 +18,13 @@ mongo = PyMongo(app)
 #user = mongo.db.users.find_one()
 
 
+app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
+app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
+app.secret_key = os.environ.get("SECRET_KEY")
+
+mongo = PyMongo(app)
+
+
 @app.route("/")
 def index():
     return render_template('pages/index.html')
@@ -37,7 +44,7 @@ def user_registration():
             "full_name": request.form.get("full_name").lower(),
             "email": request.form.get("email"),
             "password": generate_password_hash(request.form.get("password")),
-            #"created_at": datetime.datetime.utcnow(),
+            #"created_at": datetime.datetime.now(),
             "about": "",
             "company_name": "",
             "role_title": "",
