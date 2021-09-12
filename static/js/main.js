@@ -71,3 +71,12 @@ switch (current_page) {
     default:
         break;  
 };
+
+// Font resizer
+
+const slider = document.querySelector("#font-slider");
+
+slider.addEventListener("input", () => {
+    let size = (slider.value) * 1.6;
+    document.body.style.fontSize = size + "rem";
+});

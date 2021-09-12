@@ -46,6 +46,30 @@ body {
     margin: 1rem auto 0;
 }
 
+.custom-content-link {
+    color: var(--dk-color);
+    font-weight: 700;
+}
+
+    /* Buttons */
+button.btn-primary {
+    background-color: var(--dk-color);
+    color: var(--p1-color);
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid var(--dk-color);
+}
+
+button.btn-primary:hover, button.btn-primary:active,
+button.btn-primary:focus, button.btn-primary:focus-within {
+    background-color: var(--highlight-text-color);
+    border-color: var(--highlight-text-color);
+}
+
+button.btn-primary:focus {
+    box-shadow: 0 0 0 0.25rem rgb(253 13 60 / 25%);
+}
+
     /* Navbar */
 .bg-custom {
     background-color: var(--p1-color);
