@@ -2,13 +2,13 @@
 
 {% block content %}
 
-<form method="POST" action="{{ url_for('user_create_profile') }}">
+<form method="POST" action="{{ url_for('user_create_profile', user=session["user"]) }}">
   <!--About Section-->
 
   <h2>About Me </h2>
     <div class="input-group">
         <span class="input-group-text">About Me</span>
-        <textarea class="form-control" name="about_me" id="about_me" aria-label="About Me"></textarea>
+        <textarea class="form-control" name="about" id="about" aria-label="About Me"></textarea>
       </div>
   
   <!--Employment Section-->

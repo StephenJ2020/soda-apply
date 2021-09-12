@@ -35,10 +35,10 @@ def user_registration():
     if request.method == "POST":
 
         existing_user = mongo.db.users.find_one(
-            {"full_name": request.form.get("full_name").lower()})
+            {"email": request.form.get("email").lower()})
 
         if existing_user:
-            flash("Username already exists")
+            flash("Email already exists")
             return redirect(url_for("user_registration"))
         user_registration = {
             "full_name": request.form.get("full_name").lower(),
@@ -61,7 +61,7 @@ def user_registration():
         """
         start a session for the user with a session cookie
         """
-        session["user"] = request.form.get("full_name").lower()
+        session["user"] = request.form.get("email").lower()
 
         flash("Thanks for joining Soda-Apply!") #should we add another step here for 'proceed to create profile'?
         return redirect(url_for("user_create_profile", user=session["user"]))
@@ -69,10 +69,12 @@ def user_registration():
     return render_template('pages/user_registration.html')
 
 
-@app.route("/user_create_profile", methods=["GET", "POST"])
-def user_create_profile():
+@app.route("/user_create_profile/<user>", methods=["GET", "POST"])
+def user_create_profile(user):
     if request.method == "POST":
-        user=session["user"]
+        user = mongo.db.users.find_one(
+        {"_id": session["user"]})
+
         personalise_details = {"$set": {
             "about": request.form.get("about"),
             "company_name": request.form.get("company_name"),
@@ -83,12 +85,12 @@ def user_create_profile():
             "skills_competencies": request.form.getlist("skills_competencies"),
             "institute_name": request.form.get("institute_name"),
             "course_title": request.form.get("course_title"),
-            "diploma result": request.form.get("diploma result")
+            "diploma result": request.form.get("diploma_result")
         }}
         mongo.db.users.update_one(
-            {"_id": ObjectId()}, personalise_details, upsert=True) 
+            {"_id": ObjectId(user)}, personalise_details, upsert=True) 
         
-    return render_template('pages/user_create_profile.html', user=session["user"])
+    return render_template('pages/user_create_profile.html', user=user)
 
 
 @app.route("/user_edit_profile<user>")
