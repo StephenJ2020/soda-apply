@@ -97,8 +97,12 @@ def user_create_profile():
 def user_edit_profile():
     return render_template('pages/user_edit_profile.html')
 
+@app.route("/profile")
+def profile():
+    return render_template('pages/profile.html')
 
-@app.route("/login")
+
+@app.route("/login", methods=["GET", "POST"])
 def login():
     if request.method == "POST":
         """
