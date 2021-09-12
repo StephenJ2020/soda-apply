@@ -1,7 +1,7 @@
 // global variables
 
 const current_page = window.location.pathname;
-const navLinks = document.querySelectorAll(".nav-link");
+const navLinks = document.querySelectorAll(".navbar-nav .nav-link");
 let activeId = "";
 let navLink_ids = [];
 
@@ -9,7 +9,7 @@ let navLink_ids = [];
 
 for(let i = 0; i < navLinks.length; i++) {
     navLink_ids.push(navLinks[i].id);
-}
+};
 
 switch (current_page) {
     /**
@@ -28,7 +28,7 @@ switch (current_page) {
             navLinks[0].setAttribute('aria-current', 'page');
         }
         break;
-    case '/jobs':
+    case '/job_listings':
         activeId = navLink_ids[1];
 
         if (navLink_ids.includes(activeId)) {
