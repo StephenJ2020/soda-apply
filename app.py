@@ -70,7 +70,7 @@ def user_registration():
 
 
 @app.route("/user_create_profile", methods=["GET", "POST"])
-def user_create_profile(user):
+def user_create_profile():
     if request.method == "POST":
         user=session["user"]
         personalise_details = {"$set": {
@@ -86,7 +86,7 @@ def user_create_profile(user):
             "diploma result": request.form.get("diploma result")
         }}
         mongo.db.users.update_one(
-            {"_id": ObjectId(user)}, personalise_details, upsert=True) 
+            {"_id": ObjectId()}, personalise_details, upsert=True) 
         
     return render_template('pages/user_create_profile.html', user=session["user"])
 
