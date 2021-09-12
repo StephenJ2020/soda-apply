@@ -95,10 +95,12 @@ def user_create_profile(user):
 def user_edit_profile():
     return render_template('pages/user_edit_profile.html')
 
+@app.route("/contact")
+def contact():
+    return render_template('contact.html', page_title="Contact Us")
+
 
 if __name__ == "__main__":
-    app.run(
-        host = os.environ.get('IP'),
-        port = os.environ.get('PORT'),
-        debug = True
-    )
+    app.run(host=os.environ.get("IP"),
+            port=int(os.environ.get("PORT")),
+            debug=True)  # change to False before submitting
