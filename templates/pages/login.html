@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<form method="POST" action="{{ url_for(
+    'login') }}">
+      <div class="mb-3">
+          <label for="full_name" class="form-label">Full Name</label>
+          <input type="text" class="form-control" name="full_name" id="full_name" aria-describedby="full_name">
+          <div id="full_name" class="form-text"></div>
+      </div>
+      <div class="mb-3">
+        <label for="password" class="form-label">Password</label>
+        <input type="password" class="form-control" name="password" id="password" aria-describedby="password_entry" maxlength="20" class="validate"
+        autocomplete="Enter password" required>
+      </div>
+      <button type="submit" class="btn btn-primary" name="action" aria-describedby="submit_button">Login</button>
+    </form>
+  
+    <p>Not a member?</p>
+    <a href="{{ url_for(
+        'user_registration') }}">Register</a>
+
+{% endblock %}
