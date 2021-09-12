@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container-sm content-header">
+    <div class="col">
+       <h2>{{ page_title }}</h2>
+    </div>
+    <div>
+       <h3>Click<a href="{{ url_for('user_registration') }}"> here</a> to Register</h3>
+    </div>
+ </div>
+ {% for faq in soda %}
+ <div class="container-sm">
+    <div class="accordion accordion-flush" id="accordionPanelsStayOpenExample">
+       <!--Question and Answer-->
+       <div class="accordion-item">
+          <h2 class="accordion-header" id="panelsStayOpen-headingOne">
+             <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#panelsStayOpen-collapseOne" aria-expanded="true" aria-controls="panelsStayOpen-collapseOne">
+             {{ faq.question }}
+             </button>
+          </h2>
+          <div id="panelsStayOpen-collapseOne" class="accordion-collapse collapse show" aria-labelledby="panelsStayOpen-headingOne">
+             <div class="accordion-body">
+                {{ faq.answer }}
+             </div>
+          </div>
+       </div>
+    </div>
+ </div>
+ {% endfor %}
+
+ <div class="container-sm">
+    <div class="col">
+       <h4>More information on accessability</h4>
+       <ul class="faq_resources">
+          <li>
+             <a href="https://www.w3.org/WAI/standards-guidelines/aria/">ARIA</a>
+          </li>
+          <li>
+             <a href="https://www.a11yproject.com/">The A11Y Project</a>
+          </li>
+          <li>
+             <a href="https://www.w3.org/WAI/standards-guidelines/wcag/">Web Content Accessibility Guidelines (WCAG)</a>
+          </li>
+          <li>
+             <a href="https://www.w3.org/TR/UNDERSTANDING-WCAG20/intro.html#introduction-fourprincs-head">Principles of Accessibility</a>
+          </li>
+       </ul>
+    </div>
+ </div>
+
+{% endblock %}

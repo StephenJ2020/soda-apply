@@ -1,6 +1,8 @@
 import os
-from flask import (Flask, flash, render_template,
-redirect, request, session, url_for)
+import json
+from flask import (
+    Flask, render_template, flash, redirect,
+    request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -131,9 +133,46 @@ def login():
 
     return render_template('pages/login.html')
 
+
 @app.route("/contact")
 def contact():
-    return render_template('contact.html', page_title="Contact Us")
+    return render_template('pages/contact.html', page_title="Contact Us")
+
+
+@app.route("/job_listings")
+def job_listings():
+    """
+    Allow users to see all job listings
+    """
+    jobs = list(mongo.db.jobs.find())
+    return render_template('pages/job_listings.html', jobs=jobs,)
+
+
+@app.route("/job_details/<job_id>", methods=['GET', 'POST'])
+def job_details(job_id):
+    """
+    Allow user to view the complete job description
+    """
+    job = mongo.db.jobs.find_one({'_id': ObjectId(job_id)})
+    jobs = list(mongo.db.jobs.find())
+    return render_template('pages/job_details.html', jobs=jobs, job=job,)
+
+
+# Error handlers
+@app.errorhandler(404)
+def response_404(exception):
+    """
+    On 404 detection, display custom 404.html template to user
+    """
+    return render_template('pages/404.html', exception=exception, page_title="404")
+
+
+@app.errorhandler(500)
+def response_500(exception):
+    """
+    On 500 detection, display custom 500.html template to user
+    """
+    return render_template('pages/500.html', exception=exception, page_title="500")
 
 
 if __name__ == "__main__":

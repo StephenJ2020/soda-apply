@@ -1,3 +1,4 @@
+  
 /* Root variables & imports */
 @import url('https://fonts.googleapis.com/css2?family=Arvo&family=Roboto&display=swap');
 
@@ -12,9 +13,11 @@
 
     /* Colors */
     --dk-color: #1e1e1e;
+    --dk-text-color: #0e151d;
+    --highlight-text-color: #c02421;
     --p1-color: #FFEBEA;
     --s1-color: #f0452b;
-    --t1-color: #B57270;
+    --t1-color: #cc9290;
 }
 
 /* Global styles */
@@ -26,8 +29,21 @@
 }
 
 body {
+    min-height: 100vh;
+    color: var(--dk-text-color);
+    display: flex;
+    flex-direction: column;
     font-size: 1.6rem;
     font-family: var(--content-text);
+}
+
+.header-underline::after {
+    content: '';
+    display: block;
+    height: 2px;
+    width: 10rem;
+    background-color: var(--dk-text-color);
+    margin: 1rem auto 0;
 }
 
     /* Navbar */
@@ -43,8 +59,12 @@ body {
     text-align: center;
 }
 
+.navbar .navbar-nav .nav-link {
+    color: var(--dk-text-color);
+}
+
 .navbar .navbar-nav .nav-link.active {
-    color: var(--s1-color);
+    color: var(--highlight-text-color);
 }
 
 .navbar .navbar-nav .nav-link.active:after {
@@ -75,6 +95,186 @@ body {
     margin-right: 1.5rem;
 }
 
+.navbar-svg path {
+    fill: var(--p1-color);
+}
+
+    /* Content Container */
+.content-container {
+    flex: 1;
+}
+
+    /* Footer */
+footer {
+    background-color: var(--t1-color);
+}
+
+.footer-svg path {
+    fill: var(--t1-color);
+}
+
+.footer-title {
+    text-align: center;
+}
+
+#quick-links, #dev-links {
+    padding-left: 0;
+}
+
+#quick-links>.nav-item, #dev-links>.nav-item {
+    list-style: none;
+    text-align: center;
+}
+
+#quick-links .nav-link, #dev-links .nav-link {
+    color: var(--dk-text-color);
+    padding: 1rem 0;
+}
+
+.footer-text {
+    margin: 1rem auto;
+    padding: 0 2rem;
+}
+
+.social-links-row {
+    margin: 2rem auto;
+}
+
+.social-links {
+    width: 100%;
+    display: flex;
+    padding-left: 0;
+    justify-content: space-around;
+    list-style: none;
+}
+
+.social-svg-icon {
+    width: 4rem;
+    height: 4rem;
+}
+
+.social-links .nav-link {
+    transition: transform .5s ease-in-out;
+}
+
+.social-links .nav-link:hover {
+    transform: scale(1.4);
+}
+
 h1 {
     font-family: var(--header-text);
+}
+
+/* Pages */
+
+    /* Job listing page styling */
+.job-listings-cards {
+    padding: 0 10vw;
+}
+
+.job-listings-cards {
+    padding-bottom: 2rem;
+}
+
+.hover-shadow-light:hover {
+    box-shadow: 0px 8px 15px rgb(0 0 0 / 15%);
+    transition: ease;
+}
+
+    /* Job Details Page */
+.job_details {
+    height: 100%;
+    margin-bottom: 15rem;
+}
+
+.employer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 20vw 1rem 20vw;
+}
+
+.job-details-section p,
+.job-details-section h3 {
+    padding-left: 10vw;
+    padding-right: 10vw;
+    white-space: pre-line;
+}
+
+.job-type {
+    padding-top: 3rem;
+}
+
+.btn-lg {
+    padding: .5rem 1.5rem !important;
+    font-size: 1.5rem !important;
+}
+
+    /* Card Styling */
+.card {
+    margin-bottom: 4rem;
+}
+
+.card .cta {
+    text-align: center;
+    padding-top: 1rem;
+}
+
+.card-header {
+    padding: 1rem 3rem;
+    background-color:#ffe6e6;
+}
+
+.card-body p {
+    padding-left: 2rem;
+}
+
+.card-job-details ul {
+    padding-left: 15vw;
+    padding-right: 5vw;
+}
+
+    /* Error pages */
+.error-title {
+    font-size: 5rem;
+}
+
+.error-links {
+    color: var(--dk-color);
+    font-weight: 700;
+}
+
+/* Media Queries */
+
+@media (min-width: 768px) {
+    .header-underline::after {
+        content: '';
+        display: block;
+        height: 2px;
+        width: 10rem;
+        background-color: var(--dk-text-color);
+        margin: 1rem 0 0;
+    }
+
+    .footer-title {
+        text-align: left;
+        padding-left: 2rem
+    }
+
+    .footer-text {
+        margin-top: 0;
+        padding: 0 6rem 0 2rem;
+    }
+
+    .footer-text > .footer-title {
+        padding-left: 0;
+    }
+
+    #quick-links, #dev-links {
+        padding-left: 2rem;
+    }
+
+    #quick-links>.nav-item, #dev-links>.nav-item {
+        text-align: left;
+    }
 }
