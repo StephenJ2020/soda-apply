@@ -57,13 +57,18 @@ def job_details(job_id):
     return render_template('pages/job_details.html', jobs=jobs, job=job,)
 
 
+@app.route("/500")
+def error_500():
+    return render_template('pages/500.html')
+
+
 # Error handlers
 @app.errorhandler(404)
 def response_404(exception):
     """
     On 404 detection, display custom 404.html template to user
     """
-    return render_template('pages.404.html', exception=exception)
+    return render_template('pages/404.html', exception=exception)
 
 
 @app.errorhandler(500)
@@ -71,7 +76,7 @@ def response_500(exception):
     """
     On 500 detection, display custom 500.html template to user
     """
-    return render_template('pages.500.html', exception=exception)
+    return render_template('pages/500.html', exception=exception)
 
 
 if __name__ == "__main__":

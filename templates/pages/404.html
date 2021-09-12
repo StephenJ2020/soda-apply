@@ -1,5 +1,31 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <h1 class="error-title fw-bold mb-5">404 Page not found</h1>
+            <p class="px-4">
+                Sorry that page was not found to be part of this website.
+                If you continually see this page, please let us know via
+                our <a class="error-links" href="{{ url_for('contact') }} title="Contact us!">Contact</a> page.
+            </p>
+            <p class="px-4">
+                Or alternatively, reach out to us on
+                <a class="error-links" href="https://twitter.com/SodaApply" title="Reach out to us on Twitter!" target=_blank>Twitter</a>
+                to let us know of any issues you are seeing and we will look into it!
+            </p>
+            <p class="px-4">
+                If you would like to reach out to us on other Social Media,
+                see below and click on any Social Media icon of your preference
+                to get in touch with us.
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12 text-center">
+            <img class="img-fluid mb-4" src="{{ url_for('static', filename='images/Logo.png') }}" alt="Logo Image">
+        </div>
+    </div>
+</div>
 {% endblock %}
