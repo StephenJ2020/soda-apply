@@ -1,18 +1,65 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <div class="container">
-        <h1>Welcome to SODA apply</h1>
-        <div class="row align-items-center">
-            <div class="col">
-                <h2>One of three columns</h2>
-            </div>
-            <div class="col">
-                One of three columns
-            </div>
-            <div class="col">
-                One of three columns
-            </div>
-        </div>
+
+<div class="container">
+    <h1>Welcome to SODA apply</h1>
+    <div class="row align-items-center">
+       <div class="col">
+          <h2 class="align-items-center">About US</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur corporis neque quidem enim quo molestiae laborum culpa inventore quod sit a possimus, perspiciatis at suscipit nam iusto eos error consequatur!</p>
+       </div>
+       
     </div>
+ </div>
+ <!-- Jobs Section-->
+ {% block section %}
+ <div class="container">
+    {% for job in jobs %}
+   <div class="col-lg-4">
+   <div class="card mb-3" style="max-width: 540px;">
+      <div class="card-header">Header</div>
+      <div class="card-body">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+   </div>
+  {% endfor %}
+</div>
 {% endblock %}
+ <!-- Partners section-->
+ <div class="container partners">
+    <h2>Our Partners</h2>
+    <div class="row">
+       {% for partner in partners %} 
+       {% if loop.index <=3 %}
+       <div class="col-lg-4" data-bs-interval="10000">
+          <div class="col">
+             <div class="col-sm">
+                <div class="card mb-3" style="max-width: 440px;">
+                   <div class="row g-0">
+                      <div class="col-md-4">
+                         <img src="{{partner.image_url}}" class="img-fluid rounded-start" alt="comapny logo">
+                      </div>
+                      <div class="col-md-8">
+                         <div class="card-body">
+                            <h3 class="card-title"><strong>{{partner.company_name}}</strong></h3>
+                            <p class="card-text">{{partner.description}}</p>
+                            <h3 class="card-title"><strong>Testimonials:</strong></h3>
+                            <p class="card-text">{{partner.testimonials}}</p>
+                            <p class="card-text"><small class="text-muted">Rating: {{partner.rating}}</small></p>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       {% endif %}
+       {% endfor %}
+    </div>
+ </div>
+
+{% endblock %}
+

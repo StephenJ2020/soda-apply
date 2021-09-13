@@ -71,3 +71,4 @@ switch (current_page) {
     default:
         break;  
 };
+
