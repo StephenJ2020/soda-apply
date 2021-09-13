@@ -1,0 +1,53 @@
+[
+    {
+        "company_name": "Eolas",
+        "description": "Our team is made up of the smartest minds in IT recruitment, with a combined knowledge spanning over 100 years in this arena.",
+        "image_url": "https://media.glassdoor.com/companyupdate/w300/3064769/eolas-recruitment-companyupdate-1584028979795.jpg",
+        "testimonials": "Very helpful and professional service offered from the staff at Eolas recruitment.",
+        "rating": "4.5"
+    },
+    {
+        "company_name": "Code Institute",
+        "description": "Our unique and accelerated approach will help you keep pace with a rapidly changing world",
+        "image_url": "https://avatars.githubusercontent.com/u/16867170?s=280&v=4",
+        "testimonials": "I highly recommend this course if you are interested in a career change as these skills are in massive demand",
+        "rating": "4.7"
+    },
+    {
+        "company_name": "Trust in SODA",
+        "description": "Our mission is to empower and build diverse communities that represent the digital world we live in.",
+        "image_url": "https://www.bullhorn.com/uk/wp-content/uploads/sites/2/2018/11/trust-in-soda-logo.png",
+        "testimonials": "The entire process was the most positive and transparent one I have ever experienced.",
+        "rating": "4.7"
+    },
+    {
+        "company_name": "Adyen",
+        "description": "The way we work is guided by the eight principles of the Adyen Formula.",
+        "image_url": "https://seekvectorlogo.com/wp-content/uploads/2018/02/adyen-vector-logo-small.png",
+        "testimonials": "Relaxed and stimulating working atmosphere, not too corporate, ever growing and expanding.",
+        "rating": "4.5"
+    },
+    {
+        "company_name": "Manatal",
+        "description": "Our goal is simple: to provide solutions to the recruitment world’s difficulties and make the entire process simple and enjoyable",
+        "image_url": "https://www.manatal.com/wp-content/themes/wordpress_website/img/manatal-img/manatal-logo-text2.png",
+        "testimonials": "Manatal is the best ATS we worked with",
+        "rating": "4.5"
+    },
+    {
+        "company_name": "Bullhorn",
+        "description": "Bullhorn provides cloud-based CRM and operations solutions for the recruitment industry..",
+        "image_url": "https://www.bullhorn.com/wp-content/uploads/2020/07/og-img.png",
+        "testimonials": "It's perfect for any mid-sized team looking for an ATS. It has great workflows that are very easy to set up.",
+        "rating": "4.0"
+    },
+    {
+        "company_name": "Archer",
+        "description": "We’re a leading specialist search consultancy in the construction, real estate, and engineering sectors.",
+        "image_url": "https://www.archerrecruitment.com/rails/active_storage/blobs/eyJfcmFpbHMiOnsibWVzc2FnZSI6IkJBaHBBd2k3Q1E9PSIsImV4cCI6bnVsbCwicHVyIjoiYmxvYl9pZCJ9fQ==--2a932e030770c909949c6fc6a68151b9105b97a1/Archer%20SEO%20Logo%20OG.png",
+        "testimonials": "A grounded recruitment business with like-minded people, good social interaction but an understanding of what hard work.",
+        "rating": "4.0"
+    }
+    
+    
+]
