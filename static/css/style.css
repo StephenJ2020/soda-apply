@@ -115,6 +115,11 @@ h1 {
     white-space: pre-line;
 }
 
+.job-details-section span {
+    display: inline-block;
+    margin-bottom: .5rem;
+}
+
 .job-type {
     padding-top: 3rem;
 }
