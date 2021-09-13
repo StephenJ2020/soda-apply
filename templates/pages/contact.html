@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+   <div class="row">
+      <!--Contact Title-->
+      <div class="contact col-sm-12">
+         <h1>{{ page_title }}</h1>
+         <h2>We're Here to Help.</h2>
+         <p>
+            Our door is always open, and due to our incredible community we are always adapting
+            our platform to suit your needs. Accessibility is based on Research & Trial and Error.
+            If you find something that doesn't match your needs, please let us know!
+         </p>
+         <p><a class="custom-content-link" href="https://www.a11yproject.com/">Click Here</a> to find more about accessability.</p>
+      </div>
+   </div>
+   <div class="row">
+      <div class="col-sm-12">
+         <!--Contact Form-->
+         <div class="contactusForm">
+            <form id="contact-form">
+               <!--First Name-->
+               <div class="mb-3">
+                  <label for="full_name" class="form-label">Full Name</label>
+                  <input type="text" class="form-control" id="name" name="full_name" aria-describedby="full_name" required>        
+               </div>
+               <!--Email Address-->
+               <div class="mb-3">
+                  <label for="email" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
+                  <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+               </div>
+               <!--Message-->
+               <div class="mb-3">
+                  <label for="message" class="form-label">Message</label>
+                  <textarea class="form-control" placeholder="Leave a comment here" id="message" name="message" type="text" style="height: 100px"></textarea>
+               </div>
+            
+               <!-- Button trigger modal -->
+               <button type="submit" class="btn btn-primary" id="send" name="send" value="send" data-bs-toggle="modal" data-bs-target="#exampleModal"> Submit</button>
+            </form>
+         </div>
+
+         <!-- Modal -->
+         <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog"> 
+               <div class="modal-content">  
+                  <div class="modal-header">
+                     <h5 class="modal-title" id="exampleModalLabel">Message sent successfully!</h5>
+                     <p>We will be in touch!</p>
+                     <p>Thank you for using SODA-Apply</p>
+                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>    
+               </div>
+            </div>
+         </div>  
+      </div>
+   </div>
+</div>
+
+{% endblock %}

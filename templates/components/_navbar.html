@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-lg navbar-light bg-custom">
     <a class="navbar-brand" href="{{ url_for('index') }}">
-        <img class="img-fluid" src="{{ url_for('static', filename='images/Logo.png') }}" alt="Logo Image">
+        <img class="img-fluid brand-logo" src="{{ url_for('static', filename='images/Logo.png') }}" alt="Logo Image">
     </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -15,17 +15,27 @@
             <li class="nav-item">
                 <a class="nav-link p-4" id="jobs-nav-item" href="{{ url_for('job_listings') }}">Jobs</a>
             </li>
+            {% if session.user %}
+                <li class="nav-item">
+                    <a class="nav-link p-4" id="profile-nav-item" href="{{ url_for('profile', email=session['user']) }}">Profile</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link p-4" id="login-nav-item" href="{{ url_for('logout') }}">Logout</a>
+                </li>
+            {% else %}
+                <li class="nav-item">
+                    <a class="nav-link p-4" id="register-nav-item" href="{{ url_for('user_registration') }}">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link p-4" id="login-nav-item" href="{{ url_for('login') }}">Login</a>
+                </li>
+            {% endif %}
             <li class="nav-item">
-                <a class="nav-link p-4" id="profile-nav-item" href="#">Profile</a>
+                <a class="nav-link p-4" id="contact-nav-item" href="{{ url_for('contact') }}">Contact</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link p-4" id="register-nav-item" href="{{ url_for('user_registration') }}">Register</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link p-4" id="login-nav-item" href="#">Login</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link p-4" id="contact-nav-item" href="#">Contact</a>
+            <li class="a11y-nav-item">
+                <!-- A11y extra user tools -->
+                {% include 'components/_a11ytools.html' %}
             </li>
         </ul>
     </div>
