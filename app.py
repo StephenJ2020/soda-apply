@@ -71,7 +71,7 @@ def user_registration():
         session["user"] = request.form.get("email").lower()
 
         flash("Thanks for joining Soda-Apply!")
-        return redirect(url_for("user_create_profile", user=session["user_id"]))
+        return redirect(url_for("profile", user_id=session["user"]["_id"]))
 
     return render_template('pages/user_registration.html')
 
@@ -80,7 +80,7 @@ def user_registration():
 def user_create_profile(user_id):  
     if request.method == "POST":
         user = mongo.db.users.find_one(
-            {"_id": session["user"]})
+            {"_id": session["user"]})["_id"]
 
         personalise_details = {"$set": {
             "about": request.form.get("about"),
@@ -95,22 +95,24 @@ def user_create_profile(user_id):
             "diploma_result": request.form.get("diploma_result")
         }}
         mongo.db.users.update_one(
-            {"_id": ObjectId(user)}, personalise_details)
+            {"_id": ObjectId(user_id)}, personalise_details)
         flash("thanks for personalising your Soda-Apply profile.")
-    return render_template('pages/user_create_profile.html', user=user)
+    #user = mongo.db.users.find_one({"_id": session["user"]})["_id"]
+    return render_template('pages/user_create_profile.html', user=user, personalise_details=personalise_details)
 
 
-@app.route("/profile/<user>")
-def profile(user):
-    return render_template('pages/profile.html', user=user)
+@app.route("/profile/<user_id>")
+def profile(user_id):
+    full_name = mongo.db.users.find_one(
+        {"full_name": session["user"]})["full_name"]
+    user = mongo.db.users.find_one(
+        {"_id": session["user"]})["_id"]
+    
+    return render_template('pages/profile.html', full_name=full_name, user_id=session["user"]["_id"], user=user)
 
 @app.route("/user_edit_profile")
 def user_edit_profile():
     return render_template('pages/user_edit_profile.html')
-
-@app.route("/profile")
-def profile():
-    return render_template('pages/profile.html')
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -153,7 +155,6 @@ def login():
 def logout():
     session.clear()
     return redirect(url_for("login"))
-
 
 
 @app.route("/contact")
