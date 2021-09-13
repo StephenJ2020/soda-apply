@@ -16,32 +16,32 @@
     <!-- Job description -->
     <div class="job-details-section">
         <p class="job-details">
-            {{ job.employment_details[0] }}
+            {{ job.employment_details.details }}
         </p>
 
         <p class="responsibilities">
             <span class="fs-2">Responsibilities:</span>
-            {{ job.employment_details[1] }}
+            {{ job.employment_details.responsibilities }}
         </p>
 
         <p class="skills">
             <span class="fs-2">Key skills/Knowledge:</span>
-            {{ job.employment_details[2] }}
+            {{ job.employment_details.skills }}
         </p>
 
         <p class="perks">
             <span class="fs-2">Perks:</span>
-            {{ job.employment_details[3] }}
+            {{ job.employment_details.perks }}
         </p>
 
         <p class="benefits">
             <span class="fs-2">Benefits in Dublin Office:</span>
-            {{ job.employment_details[4] }}
+            {{ job.employment_details.benefits }}
         </p>
 
         <!-- Footer description -->
-        <h3 class="job-type">Job Type: <span class="ps-3">{{ job.salary[1] }}</span></h3>
-        <h3 class="job-salary">Salary: <span class="ps-3">{{ job.salary[0] }} per year</span></h3>
+        <h3 class="job-type">Job Type: <span class="ps-3">{{ job.salary.type }}</span></h3>
+        <h3 class="job-salary">Salary: <span class="ps-3">{{ job.salary.salary_amount }} per year</span></h3>
         <h3 class="schedule">Schedule: <span class="ps-3">{{ job.schedule }}</span></h3>
     </div>
 </div>

@@ -79,7 +79,7 @@ h1 {
     font-family: var(--header-text);
 }
 
-/*===== Job listing page styling =====*/
+/* Job listing page styling */
 
 .job-listings-cards {
     padding: 0 10vw;
@@ -94,7 +94,7 @@ h1 {
     transition: ease;
 }
 
-/*===== Job Details Page =====*/
+/* Job Details Page */
 
 .job_details {
     height: 100%;
@@ -120,10 +120,10 @@ h1 {
 }
 
 .btn-lg {
-    padding: .5rem 1.5rem !important;
-    font-size: 1.5rem !important;
+    padding: .5rem 1.5rem;
+    font-size: 1.5rem;
 }
-/*===== Card Styling =====*/
+/* Card Styling */
 
 .card {
     margin-bottom: 4rem;
@@ -136,7 +136,7 @@ h1 {
 
 .card-header {
     padding: 1rem 3rem;
-    background-color:#ffe6e6;
+    background-color: var(--p1-color);
 }
 
 .card-body p {
