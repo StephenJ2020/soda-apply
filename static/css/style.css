@@ -15,7 +15,7 @@
     --dk-color: #1e1e1e;
     --dk-text-color: #0e151d;
     --highlight-text-color: #c02421;
-    --p1-color: #FFEBEA;
+    --p1-color: #ffebea;
     --s1-color: #f0452b;
     --t1-color: #cc9290;
 }
@@ -44,6 +44,30 @@ body {
     width: 10rem;
     background-color: var(--dk-text-color);
     margin: 1rem auto 0;
+}
+
+.custom-content-link {
+    color: var(--dk-color);
+    font-weight: 700;
+}
+
+    /* Buttons */
+button.btn-primary {
+    background-color: var(--dk-color);
+    color: var(--p1-color);
+    font-size: 1.5rem;
+    border-radius: 1rem;
+    border: 1px solid var(--dk-color);
+}
+
+button.btn-primary:hover, button.btn-primary:active,
+button.btn-primary:focus, button.btn-primary:focus-within {
+    background-color: var(--highlight-text-color);
+    border-color: var(--highlight-text-color);
+}
+
+button.btn-primary:focus {
+    box-shadow: 0 0 0 0.25rem rgb(253 13 60 / 25%);
 }
 
     /* Navbar */
@@ -222,7 +246,7 @@ h1 {
 
 .card-header {
     padding: 1rem 3rem;
-    background-color:#ffe6e6;
+    background-color:var(--p1-color);
 }
 
 .card-body p {
@@ -232,6 +256,16 @@ h1 {
 .card-job-details ul {
     padding-left: 15vw;
     padding-right: 5vw;
+}
+
+    /* Contact */
+#send {
+    display: block;
+    margin: 0 auto;
+}
+
+.form-control {
+    font-size: 1.6rem;
 }
 
     /* Error pages */
