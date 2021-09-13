@@ -78,10 +78,10 @@ def user_registration():
     return render_template('pages/user_registration.html')
 
 
-@app.route("/user_create_profile/", methods=["GET", "POST"])
-def user_create_profile():
+@app.route("/user_create_profile/<user_id>", methods=["GET", "POST"])
+def user_create_profile(user_id):
     if request.method == "POST":
-        user = mongo.db.users.find_one({"email": session["user"]})["_id"]
+        user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
         personalise_details = {"$set": {
             "about": request.form.get("about"),
             "company_name": request.form.get("company_name"),
@@ -94,10 +94,13 @@ def user_create_profile():
             "course_title": request.form.get("course_title"),
             "diploma result": request.form.get("diploma result")
         }}
-        mongo.db.users.coll.update(
-            {"_id": ObjectId(user)})
+        print(user)
+        mongo.db.users.update({"_id": ObjectId(user_id)}, personalise_details)
         
-    return render_template('pages/user_create_profile.html')
+        return render_template('pages/user_create_profile.html', user=user)
+
+    flash("Error")
+    return render_template('pages/index.html')
 
 
 @app.route("/user_edit_profile")
@@ -116,7 +119,7 @@ def login():
         checks if user is already a member in the database
         """
         existing_user = mongo.db.users.find_one(
-            {"full_name": request.form.get("full_name").lower()})
+            {"email": request.form.get("email").lower()})
         
         if existing_user:
             """
@@ -125,9 +128,8 @@ def login():
             if check_password_hash(
                     existing_user["password"], request.form.get(
                         "password")):
-                session["user"] = request.form.get("full_name").lower()
-                return redirect(url_for(
-                    "profile", full_name=session["user"]))
+                session["user"] = request.form.get("email").lower()
+                return redirect(url_for("profile", email=session["user"]))
 
             else:
                 """

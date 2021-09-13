@@ -3,7 +3,7 @@
 {% block content %}
 
 <p>Welcome to your profile page</p>
-<a href="{{ url_for('user_create_profile') }}">Add Profile details</a>
+<a href="{{ url_for('user_create_profile', user_id=user._id) }}">Add Profile details</a>
 </a>
 
 
