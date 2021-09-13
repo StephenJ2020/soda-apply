@@ -60,7 +60,7 @@ switch (current_page) {
             navLinks[4].setAttribute('aria-current', 'page');
         }
         break;
-    default:
+    case '/contact':
         activeId = navLink_ids[5];
 
         if (navLink_ids.includes(activeId)) {
@@ -68,4 +68,7 @@ switch (current_page) {
             navLinks[5].setAttribute('aria-current', 'page');
         }
         break;  
+    default:
+        break;  
 };
+

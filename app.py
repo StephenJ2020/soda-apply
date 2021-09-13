@@ -1,4 +1,5 @@
 import os
+import random
 import json
 from flask import (
     Flask, render_template, flash, redirect,
@@ -29,7 +30,11 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def index():
-    return render_template('pages/index.html')
+    partnerdata = []    
+    with open("data/partner.json", "r") as json_partnerdata:
+        partnerdata = json.load(json_partnerdata)
+        random.shuffle(partnerdata)
+    return render_template('pages/index.html', partners=partnerdata)
 
 
 @app.route("/user_registration", methods=["GET", "POST"])
@@ -99,9 +104,57 @@ def user_create_profile(user_id):
 def profile(user):
     return render_template('pages/profile.html', user=user)
 
-@app.route("/user_edit_profile<user>")
+@app.route("/user_edit_profile")
 def user_edit_profile():
     return render_template('pages/user_edit_profile.html')
+
+@app.route("/profile")
+def profile():
+    return render_template('pages/profile.html')
+
+
+@app.route("/login", methods=["GET", "POST"])
+def login():
+    if request.method == "POST":
+        """
+        checks if user is already a member in the database
+        """
+        existing_user = mongo.db.users.find_one(
+            {"full_name": request.form.get("full_name").lower()})
+        
+        if existing_user:
+            """
+            checks password is correct
+            """
+            if check_password_hash(
+                    existing_user["password"], request.form.get(
+                        "password")):
+                session["user"] = request.form.get("full_name").lower()
+                return redirect(url_for(
+                    "profile", full_name=session["user"]))
+
+            else:
+                """
+                if password invalid
+                """
+                flash("Invalid password and / or username")
+                return redirect(url_for("login"))
+        else:
+            """
+            if username invalid
+            """
+            flash("Invalid password and / or username")
+            return redirect(url_for("login"))
+
+    return render_template('pages/login.html')
+
+
+@app.route("/logout")
+def logout():
+    session.clear()
+    return redirect(url_for("login"))
+
+
 
 @app.route("/contact")
 def contact():
@@ -125,6 +178,23 @@ def job_details(job_id):
     job = mongo.db.jobs.find_one({'_id': ObjectId(job_id)})
     jobs = list(mongo.db.jobs.find())
     return render_template('pages/job_details.html', jobs=jobs, job=job,)
+
+
+# Error handlers
+@app.errorhandler(404)
+def response_404(exception):
+    """
+    On 404 detection, display custom 404.html template to user
+    """
+    return render_template('pages/404.html', exception=exception, page_title="404")
+
+
+@app.errorhandler(500)
+def response_500(exception):
+    """
+    On 500 detection, display custom 500.html template to user
+    """
+    return render_template('pages/500.html', exception=exception, page_title="500")
 
 
 if __name__ == "__main__":
