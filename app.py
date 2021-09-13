@@ -43,44 +43,46 @@ def user_registration():
     if request.method == "POST":
 
         existing_user = mongo.db.users.find_one(
-            {"full_name": request.form.get("full_name").lower()})
+            {"email": request.form.get("email").lower()})
 
         if existing_user:
             flash("Username already exists")
             return redirect(url_for("user_registration"))
+
         user_registration = {
             "full_name": request.form.get("full_name").lower(),
             "email": request.form.get("email"),
             "password": generate_password_hash(request.form.get("password")),
             #"created_at": datetime.datetime.now(),
-            "about": "",
-            "company_name": "",
-            "role_title": "",
-            "months_employed": 0,
-            "accessible_hiring_preferences": [],
-            "other_acc_hiring_preferences": "",
-            "skills_competencies": [],
-            "institute_name": "",
-            "course_title": "",
-            "diploma result": "",
-            "jobs_applied":[]
+            #"about": "",
+            #"company_name": "",
+            #"role_title": "",
+            #"months_employed": 0,
+            #"accessible_hiring_preferences": [],
+            #"other_acc_hiring_preferences": "",
+            #"skills_competencies": [],
+            #"institute_name": "",
+            #"course_title": "",
+            #"diploma result": "",
+            #"jobs_applied":[]
         }
         mongo.db.users.insert_one(user_registration)
         """
         start a session for the user with a session cookie
         """
-        session["user"] = request.form.get("full_name").lower()
+        session["user"] = request.form.get("email").lower()
 
         flash("Thanks for joining Soda-Apply!") #should we add another step here for 'proceed to create profile'?
-        return redirect(url_for("user_create_profile", user=session["user"]))
+        return redirect(url_for('profile'))
 
     return render_template('pages/user_registration.html')
 
 
-@app.route("/user_create_profile", methods=["GET", "POST"])
-def user_create_profile():
+@app.route("/user_create_profile/<email>", methods=["GET", "POST"])
+def user_create_profile(email):
     if request.method == "POST":
-        user=session["user"]
+        session["user"] = request.form.get("email").lower()
+        user = mongo.db.users.find_one({"_id": ObjectId(email)})
         personalise_details = {"$set": {
             "about": request.form.get("about"),
             "company_name": request.form.get("company_name"),
@@ -93,19 +95,25 @@ def user_create_profile():
             "course_title": request.form.get("course_title"),
             "diploma result": request.form.get("diploma result")
         }}
-        mongo.db.users.update_one(
-            {"_id": ObjectId()}, personalise_details, upsert=True) 
+        print(user)
+        mongo.db.users.update({"_id": ObjectId(email)}, personalise_details)
         
-    return render_template('pages/user_create_profile.html', user=session["user"])
+        return render_template('pages/user_create_profile.html', email=session["user"])
+
+    return render_template('pages/index.html')
 
 
 @app.route("/user_edit_profile")
 def user_edit_profile():
-    return render_template('pages/user_edit_profile.html')
+    return render_template('pages/user_create_profile.html')
 
-@app.route("/profile")
-def profile():
-    return render_template('pages/profile.html')
+@app.route("/profile/<email>")
+def profile(email):
+    user = mongo.db.users.find_one({"email": session["user"]})["email"]
+    users = mongo.db.users.find()
+    if session["user"]:
+        return render_template('pages/profile.html', users=users, user=user)
+    return redirect( url_for('login'))
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -115,7 +123,7 @@ def login():
         checks if user is already a member in the database
         """
         existing_user = mongo.db.users.find_one(
-            {"full_name": request.form.get("full_name").lower()})
+            {"email": request.form.get("email").lower()})
         
         if existing_user:
             """
@@ -124,9 +132,8 @@ def login():
             if check_password_hash(
                     existing_user["password"], request.form.get(
                         "password")):
-                session["user"] = request.form.get("full_name").lower()
-                return redirect(url_for(
-                    "profile", full_name=session["user"]))
+                session["user"] = request.form.get("email").lower()
+                return redirect(url_for("profile", email=session["user"]))
 
             else:
                 """
