@@ -92,6 +92,8 @@ const dkColor = '--dk-color';
 const dkTextColor = '--dk-text-color';
 const highlightTextColor = '--highlight-text-color';
 
+const logo = document.querySelector(".navbar-brand .brand-logo");
+
 theme.addEventListener("change", () => {
     /**
      * Simple color blind theme switcher
@@ -111,6 +113,7 @@ theme.addEventListener("change", () => {
             root.style.setProperty(dkColor, '#1e1e1e');
             root.style.setProperty(dkTextColor, '#0e151d');
             root.style.setProperty(highlightTextColor, '#32378c');
+            logo.setAttribute('src', 'static/images/Logo-protonomaly.png');
             break;
         case 'deuteranopia':
             root.style.setProperty(p1Color, '#e0f3db');
@@ -119,6 +122,7 @@ theme.addEventListener("change", () => {
             root.style.setProperty(dkColor, '#1e1e1e');
             root.style.setProperty(dkTextColor, '#0e151d');
             root.style.setProperty(highlightTextColor, '#3428ba');
+            logo.setAttribute('src', 'static/images/Logo-deuteranopia.png');
             break;
         case 'deuteranomaly':
             root.style.setProperty(p1Color, '#d2cdee');
@@ -127,6 +131,7 @@ theme.addEventListener("change", () => {
             root.style.setProperty(dkColor, '#1e1e1e');
             root.style.setProperty(dkTextColor, '#07071b');
             root.style.setProperty(highlightTextColor, '#111264');
+            logo.setAttribute('src', 'static/images/Logo-deuteranomaly.png');
             break;
         case 'tritanopia':
             root.style.setProperty(p1Color, '#D8BFD8');
@@ -135,6 +140,7 @@ theme.addEventListener("change", () => {
             root.style.setProperty(dkColor, '#1e1e1e');
             root.style.setProperty(dkTextColor, '#02030f');
             root.style.setProperty(highlightTextColor, '#0d2791');
+            logo.setAttribute('src', 'static/images/Logo-tritanopia.png');
             break;
         default:
             root.style.setProperty(p1Color, '#FFEBEA');
@@ -143,6 +149,7 @@ theme.addEventListener("change", () => {
             root.style.setProperty(dkColor, '#1e1e1e');
             root.style.setProperty(dkTextColor, '#0e151d');
             root.style.setProperty(highlightTextColor, '#c02421');
+            logo.setAttribute('src', 'static/images/Logo.png');
             break;
     }
 });
