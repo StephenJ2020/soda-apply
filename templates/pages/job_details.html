@@ -60,7 +60,7 @@
 </div>
 
     <!-- Modal -->
-    <form class="col s12" method="POST" action="{{ url_for('job_applied', job_id=job._id) }}">
+    <form class="col s12" method="POST" action="{{ url_for('job_applied', job_id=job._id, user_id=user._id) }}">
         {% include 'components/_modal.html' %}
     </form>
 {% endblock %}

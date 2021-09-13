@@ -9,9 +9,11 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                {% if session.user|lower %} %}
-                    Applicant: {{ user.full_name }} <br>
-                    Email: {{ user.email }} <br>
+                
+                    Applicant: <span class="ps-3">{{ user.full_name }}</span> <br>
+                    Email: <span class="ps-3">{{ user.email }}</span> <br>
+
+                    <hr class="text-secondary">
 
                     <!-- Preferences -->
                     {% if user.accessible_hiring_preferences %}
@@ -25,17 +27,12 @@
 
                      <!-- Other -->
                     {% if user.other_acc_hiring_preferences %}
-                        Hiring Preferences: 
+                        Hiring Preferences: <br>
                             <ul>
-                            {% for other in user.other_acc_hiring_preferences %}
-                                <li>{{ other }}</li>
-                            {% endfor %}
+                                <li><span class="ps-3">{{ user.other_acc_hiring_preferences }}</span></li>
                             </ul>
                     {% endif %}       
                     
-                {% else %}
-                    Please log in
-                {% endif %}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-lg rounded-pill btn-outline-dark" data-bs-dismiss="modal">Back</button>
