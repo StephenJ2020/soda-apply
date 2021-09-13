@@ -4,7 +4,7 @@
     <div class="card-header fs-1">{{ job.role }}</div>
     <div class="card-body">
         <p class="card-job-provider fs-3 pt-4">Employer: <span class="px-4">{{ job.employer }}</span></p>
-        <p class="card-salary fs-3">Salary: £<span class="px-4">{{job.salary[0]}} per year</span></p>
+        <p class="card-salary fs-3">Salary: <span class="px-4">{{ job.salary.salary_amount }} per year</span></p>
 
         <!-- Employment Details -->
         <p>Employment Details: </p>

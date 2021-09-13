@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="job_details">
-    <h1 class="text-center">{{job.role}}</h1>
+    <h1 class="text-center">{{ job.role }}</h1>
 
     <!-- Employer details -->
     <div class="employer-details text-center">
@@ -10,39 +10,57 @@
             {{ job.employer }} <br>
             {{ job.location }} 
         </p>
-        <a href="#" class="btn rounded-pill btn-lg btn-outline-dark">Apply With Soda</a>
+        <button class="btn rounded-pill btn-lg btn-outline-dark" data-bs-toggle="modal" data-bs-target="#job_apply">
+            Apply With Soda
+        </button>
     </div>
 
     <!-- Job description -->
     <div class="job-details-section">
-        <p class="job-details">
-            {{ job.employment_details[0] }}
-        </p>
 
-        <p class="responsibilities">
-            <span class="fs-2">Responsibilities:</span>
-            {{ job.employment_details[1] }}
-        </p>
+        {% if job.employment_details.details != "" %}
+            <p class="job-details">
+                {{ job.employment_details.details }}
+            </p>
+        {% endif %}
 
-        <p class="skills">
-            <span class="fs-2">Key skills/Knowledge:</span>
-            {{ job.employment_details[2] }}
-        </p>
+        {% if job.employment_details.responsibilities != "" %}
+            <p class="responsibilities">
+                <span class="fs-2">Responsibilities:</span>
+                {{ job.employment_details.responsibilities }}
+            </p>
+        {% endif %}
 
-        <p class="perks">
-            <span class="fs-2">Perks:</span>
-            {{ job.employment_details[3] }}
-        </p>
+        {% if job.employment_details.skills != "" %}
+            <p class="skills">
+                <span class="fs-2">Key skills/Knowledge:</span>
+                {{ job.employment_details.skills }}
+            </p>
+        {% endif %}
 
-        <p class="benefits">
-            <span class="fs-2">Benefits in Dublin Office:</span>
-            {{ job.employment_details[4] }}
-        </p>
+        {% if job.employment_details.perks != "" %}
+            <p class="perks">
+                <span class="fs-2">Perks:</span>
+                {{ job.employment_details.perks }}
+            </p>
+        {% endif %}
+
+        {% if job.employment_details.benefits != "" %}
+            <p class="benefits">
+                <span class="fs-2">Benefits in Dublin Office:</span>
+                {{ job.employment_details.benefits }}
+            </p>
+        {% endif %}
 
         <!-- Footer description -->
-        <h3 class="job-type">Job Type: <span class="ps-3">{{ job.salary[1] }}</span></h3>
-        <h3 class="job-salary">Salary: <span class="ps-3">{{ job.salary[0] }} per year</span></h3>
+        <h3 class="job-type">Job Type: <span class="ps-3">{{ job.salary.type }}</span></h3>
+        <h3 class="job-salary">Salary: <span class="ps-3">{{ job.salary.salary_amount }} per year</span></h3>
         <h3 class="schedule">Schedule: <span class="ps-3">{{ job.schedule }}</span></h3>
     </div>
 </div>
+
+    <!-- Modal -->
+    <form class="col s12" method="POST" action="{{ url_for('job_applied', job_id=job._id, user_id=user._id) }}">
+        {% include 'components/_modal.html' %}
+    </form>
 {% endblock %}
