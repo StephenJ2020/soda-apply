@@ -72,10 +72,11 @@ def user_registration():
     return render_template('pages/user_registration.html')
 
 
-@app.route("/user_create_profile/<user_id>", methods=["GET", "POST"])
-def user_create_profile(user_id):
+@app.route("/user_create_profile/<email>", methods=["GET", "POST"])
+def user_create_profile(email):
     if request.method == "POST":
-        user = mongo.db.users.find_one({"_id": ObjectId(user_id)})
+        session["user"] = request.form.get("email").lower()
+        user = mongo.db.users.find_one({"_id": ObjectId(email)})
         personalise_details = {"$set": {
             "about": request.form.get("about"),
             "company_name": request.form.get("company_name"),
@@ -89,21 +90,24 @@ def user_create_profile(user_id):
             "diploma result": request.form.get("diploma result")
         }}
         print(user)
-        mongo.db.users.update({"_id": ObjectId(user_id)}, personalise_details)
+        mongo.db.users.update({"_id": ObjectId(email)}, personalise_details)
         
-        return render_template('pages/user_create_profile.html', user=user)
+        return render_template('pages/user_create_profile.html', email=session["user"])
 
-    flash("Error")
     return render_template('pages/index.html')
 
 
 @app.route("/user_edit_profile")
 def user_edit_profile():
-    return render_template('pages/user_edit_profile.html')
+    return render_template('pages/user_create_profile.html')
 
-@app.route("/profile")
-def profile():
-    return render_template('pages/profile.html')
+@app.route("/profile/<email>")
+def profile(email):
+    user = mongo.db.users.find_one({"email": session["user"]})["email"]
+    users = mongo.db.users.find()
+    if session["user"]:
+        return render_template('pages/profile.html', users=users, user=user)
+    return redirect( url_for('login'))
 
 
 @app.route("/login", methods=["GET", "POST"])
