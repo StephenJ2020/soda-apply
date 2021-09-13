@@ -49,7 +49,25 @@ def job_details(job_id):
     """
     job = mongo.db.jobs.find_one({'_id': ObjectId(job_id)})
     jobs = list(mongo.db.jobs.find())
-    return render_template('pages/job_details.html', jobs=jobs, job=job,)
+    # user = mongo.db.users.find_one({'full_name': session['user']})
+    user = mongo.db.users.find_one({'full_name': "Gemma Sayer"})
+    return render_template('pages/job_details.html', jobs=jobs, job=job, user=user)
+
+
+@app.route('/job_application/<job_id>')
+def job_applied(job_id):
+    """
+    Stores data record that the user applied for a job.
+    Stores the job into job_applied data array.
+    """
+    # user = mongo.db.users.find_one({'full_name': session['user']})
+    user = mongo.db.users.find_one({'full_name': "Gemma Sayer"})
+
+    if request.method == 'POST':
+        applied_to_job = mongo.db.jobs.find_one({'_id': ObjectId(job_id)})
+        mongo.db.users.insert_one(user.jobs_applied.applied_to_job['role'])
+
+    return redirect(url_for('job_listings'))
 
 
 if __name__ == "__main__":

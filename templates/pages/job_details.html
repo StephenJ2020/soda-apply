@@ -60,5 +60,7 @@
 </div>
 
     <!-- Modal -->
-    {% include 'components/_modal.html' %}
+    <form class="col s12" method="POST" action="{{ url_for('job_applied', job_id=job._id) }}">
+        {% include 'components/_modal.html' %}
+    </form>
 {% endblock %}

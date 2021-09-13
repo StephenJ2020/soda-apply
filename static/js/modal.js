@@ -1,3 +1,4 @@
+// From Bootstrap 5 modal documentation
 var myModal = document.getElementById('myModal')
 var myInput = document.getElementById('myInput')
 

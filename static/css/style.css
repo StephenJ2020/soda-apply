@@ -128,6 +128,10 @@ h1 {
     padding: .5rem 1.5rem;
     font-size: 1.5rem;
 }
+
+.text-red {
+    color: var(--s1-color);
+}
 /* Card Styling */
 
 .card {
