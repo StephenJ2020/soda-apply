@@ -30,11 +30,12 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def index():
-    partnerdata = []    
+    partnerdata = []   
     with open("data/partner.json", "r") as json_partnerdata:
         partnerdata = json.load(json_partnerdata)
-        random.shuffle(partnerdata)
-    return render_template('pages/index.html', partners=partnerdata)
+        random.shuffle(partnerdata)    
+    jobs = list(mongo.db.jobs.find())
+    return render_template('pages/index.html', partners=partnerdata, jobs=jobs)
 
 
 @app.route("/user_registration", methods=["GET", "POST"])
@@ -47,22 +48,22 @@ def user_registration():
             flash("Email already exists")
             return redirect(url_for("user_registration"))
 
-        registration = {
+        user_registration = {
             "full_name": request.form.get("full_name").lower(),
             "email": request.form.get("email"),
             "password": generate_password_hash(request.form.get("password")),
             #"created_at": datetime.datetime.now(),
-            "about": "",
-            "company_name": "",
-            "role_title": "",
-            "months_employed": 0,
-            "accessible_hiring_preferences": [],
-            "other_acc_hiring_preferences": "",
-            "skills_competencies": [],
-            "institute_name": "",
-            "course_title": "",
-            "diploma_result": "",
-            "jobs_applied":[]
+            #"about": "",
+            #"company_name": "",
+            #"role_title": "",
+            #"months_employed": 0,
+            #"accessible_hiring_preferences": [],
+            #"other_acc_hiring_preferences": "",
+            #"skills_competencies": [],
+            #"institute_name": "",
+            #"course_title": "",
+            #"diploma result": "",
+            #"jobs_applied":[]
         }
         mongo.db.users.insert_one(registration)
         """
@@ -70,18 +71,17 @@ def user_registration():
         """
         session["user"] = request.form.get("email").lower()
 
-        flash("Thanks for joining Soda-Apply!")
-        return redirect(url_for("profile", user_id=session["user"]["_id"]))
+        flash("Thanks for joining Soda-Apply!") #should we add another step here for 'proceed to create profile'?
+        return redirect(url_for('profile'))
 
     return render_template('pages/user_registration.html')
 
 
-@app.route("/user_create_profile/<user_id>", methods=["GET", "POST"])
-def user_create_profile(user_id):  
+@app.route("/user_create_profile/<email>", methods=["GET", "POST"])
+def user_create_profile(email):
     if request.method == "POST":
-        user = mongo.db.users.find_one(
-            {"_id": session["user"]})["_id"]
-
+        session["user"] = request.form.get("email").lower()
+        user = mongo.db.users.find_one({"_id": ObjectId(email)})
         personalise_details = {"$set": {
             "about": request.form.get("about"),
             "company_name": request.form.get("company_name"),
@@ -94,12 +94,12 @@ def user_create_profile(user_id):
             "course_title": request.form.get("course_title"),
             "diploma_result": request.form.get("diploma_result")
         }}
-        mongo.db.users.update_one(
-            {"_id": ObjectId(user_id)}, personalise_details)
-        flash("thanks for personalising your Soda-Apply profile.")
-    #user = mongo.db.users.find_one({"_id": session["user"]})["_id"]
-    return render_template('pages/user_create_profile.html', user=user, personalise_details=personalise_details)
+        print(user)
+        mongo.db.users.update({"_id": ObjectId(email)}, personalise_details)
+        
+        return render_template('pages/user_create_profile.html', email=session["user"])
 
+    return render_template('pages/index.html')
 
 @app.route("/profile/<user_id>")
 def profile(user_id):
@@ -112,7 +112,15 @@ def profile(user_id):
 
 @app.route("/user_edit_profile")
 def user_edit_profile():
-    return render_template('pages/user_edit_profile.html')
+    return render_template('pages/user_create_profile.html')
+
+@app.route("/profile/<email>")
+def profile(email):
+    user = mongo.db.users.find_one({"email": session["user"]})["email"]
+    users = mongo.db.users.find()
+    if session["user"]:
+        return render_template('pages/profile.html', users=users, user=user)
+    return redirect( url_for('login'))
 
 
 @app.route("/login", methods=["GET", "POST"])
@@ -122,7 +130,7 @@ def login():
         checks if user is already a member in the database
         """
         existing_user = mongo.db.users.find_one(
-            {"full_name": request.form.get("full_name").lower()})
+            {"email": request.form.get("email").lower()})
         
         if existing_user:
             """
@@ -131,9 +139,8 @@ def login():
             if check_password_hash(
                     existing_user["password"], request.form.get(
                         "password")):
-                session["user"] = request.form.get("full_name").lower()
-                return redirect(url_for(
-                    "profile", full_name=session["user"]))
+                session["user"] = request.form.get("email").lower()
+                return redirect(url_for("profile", email=session["user"]))
 
             else:
                 """
@@ -162,13 +169,18 @@ def contact():
     return render_template('pages/contact.html', page_title="Contact Us")
 
 
-@app.route("/job_listings")
+@app.route("/job_listings/")
 def job_listings():
     """
     Allow users to see all job listings
     """
-    jobs = list(mongo.db.jobs.find())
-    return render_template('pages/job_listings.html', jobs=jobs,)
+    jobs_list = list(mongo.db.jobs.find())
+
+    # if session['user']:
+        # user = mongo.db.users.find_one({'full_name': 'Gemma Sayers'})
+        # jobs = list(mongo.db.jobs.find())
+        # jobs_applied = list(mongo.db.users.find({'jobs_applied': { '$in': jobs[1],} }))
+    return render_template('pages/job_listings.html', jobs_list=jobs_list)
 
 
 @app.route("/job_details/<job_id>", methods=['GET', 'POST'])
@@ -176,9 +188,47 @@ def job_details(job_id):
     """
     Allow user to view the complete job description
     """
+    user = mongo.db.users.find_one({'full_name': 'Gemma Sayers'})
     job = mongo.db.jobs.find_one({'_id': ObjectId(job_id)})
-    jobs = list(mongo.db.jobs.find())
-    return render_template('pages/job_details.html', jobs=jobs, job=job,)
+
+    if request.method == 'POST':
+        user = mongo.db.users.find_one({'full_name': 'Gemma Sayers'})
+
+    return render_template('pages/job_details.html', job=job, user=user)
+
+
+@app.route('/job_application/<job_id>', methods=['GET', 'POST'])
+def job_applied(job_id):
+    """ 
+    Stores data record that the user applied for a job. 
+    Stores the job into job_applied data array.
+    """
+    # user = mongo.db.jobs.find_one({'_id': ObjectId(user_id)})
+    # user = mongo.db.users.find_one({'full_name': 'Gemma Sayers'}) 
+    user_jobs = []
+
+    if request.method == 'POST':
+        job = mongo.db.jobs.find_one({'_id': ObjectId(job_id)}) 
+        user_jobs.append(job['role'])
+
+        # mongo.db.users.update({'_id': ObjectId(user_id)}, {
+        #                       '$push': {'jobs_applied': user_jobs[0],}})
+        mongo.db.users.update({'full_name': 'Gemma Sayers'}, {
+                              '$push': {'jobs_applied': user_jobs[0],}})
+        print(user_jobs)
+
+    return redirect(url_for('job_listings'))
+
+
+
+@app.route("/accessibility")
+def accessibility():
+    return render_template('pages/accessibility.html', page_title="Accessibility Statement")
+
+
+@app.route("/privacy")
+def privacy():
+    return render_template('pages/privacy.html', page_title="Privacy Statement")
 
 
 # Error handlers

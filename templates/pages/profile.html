@@ -1,73 +1,66 @@
 {% extends 'base.html' %}
-
 {% block content %}
-
-<h1>{{ user.full_name }}'s Profile</h1>
-
-<h2>About</h2>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <div class="job-listings-cards">
-                
-                {{ user.about }}}
-                
+    <div class="container">
+        {% for user in users %}
+            {% if session.user == user.email  %}
+            <h1> {{ user.full_name }}’s Profile</h1>
+            <h2>About</h2>
+            <div class=“container-fluid”>
+                <div class=“row”>
+                    <div class=“col-12”>
+                        <div class=“job-listings-cards”>
+                            {{ user.about }}  
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
-
-<h2>Experience</h2>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <div class="job-listings-cards"> 
-                <h3>{{ user.company_name }}}</h3>
-                <h4>{{ user.role_title }}</h4>
-                <p>{{ user.months_employed }}</p>
+            <h2>Experience</h2>
+            <div class=“container-fluid”>
+                <div class=“row”>
+                    <div class=“col-12”>
+                        <div class=“job-listings-cards”>
+                            <h3> {{user.company_name}} </h3>
+                            <h4> {{user.role_title}} </h4>
+                            <p> {{user.months_employed}} </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
-
-<h2>Hiring Preferences</h2>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <div class="job-listings-cards"> 
-                <h3>{{ user.accessible_hiring_preferences }}}</h3>
-                <h4>{{ user.other_acc_hiring_preferences }}</h4>
+            <h2>Hiring Preferences</h2>
+            <div class=“container-fluid”>
+                <div class=“row”>
+                    <div class=“col-12”>
+                        <div class=“job-listings-cards”>
+                            <h3> {{user.accessible_hiring_preferences}} </h3>
+                            <h4> {{user.other_acc_hiring_preferences}} </h4>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
-
-<h2>Skills & Competencies</h2>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <div class="job-listings-cards"> 
-                <h3>{{ user.skills_competencies }}}</h3>
+            <h2>Skills & Competencies</h2>
+            <div class=“container-fluid”>
+                <div class=“row”>
+                    <div class=“col-12”>
+                        <div class=“job-listings-cards”>
+                            <h3> {{user.skills_competencies}} </h3>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-</div>
-
-<h2>Education</h2>
-<div class="container-fluid">
-    <div class="row">
-        <div class="col-12">
-            <div class="job-listings-cards"> 
-                <h3>{{ user.institute_name }}}</h3>
-                <h4>{{ user.course_title }}</h4>
-                <p>{{ user.diploma_result }}</p>
+            <h2>Education</h2>
+            <div class=“container-fluid”>
+                <div class=“row”>
+                    <div class=“col-12”>
+                        <div class=“job-listings-cards”>
+                            <h3> {{user.institute_name}} </h3>
+                            <h4> {{user.course_title}} </h4>
+                            <p> {{user.diploma_result}} </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
+            <a href="{{ url_for('user_create_profile', email=session['user'])}}">Edit or Create profile</a>
+            {% endif %}
+        {% endfor %}
     </div>
-</div>
-
-
-
-<a href="{{ url_for('user_create_profile', user_id=user._id)}}">Edit or Create profile</a>
-
 {% endblock %}

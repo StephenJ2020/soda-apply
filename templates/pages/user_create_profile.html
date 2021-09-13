@@ -2,10 +2,10 @@
 
 {% block content %}
 
-<form method="POST" action="{{ url_for('user_create_profile', user_id=user._id) }}">
-  <!--About Section-->
+  <form method="POST" action="{{ url_for('user_create_profile') }}">
+    <!--About Section-->
 
-  <h2>About Me </h2>
+    <h2>About Me </h2>
     <div class="input-group">
         <span class="input-group-text">About Me</span>
         <textarea class="form-control" name="about" id="about" value="{{ user.about }}" aria-label="About Me"></textarea>
@@ -42,7 +42,7 @@
     </div>
 
     <!--Skills Section-->
-    
+
     <h2>Skills & Competencies</h2>
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="{{ user.skills_competencies }}" name="skills_competencies" id="skills_competencies">
@@ -71,13 +71,13 @@
       <input type="text" class="form-control" name="diploma_result" value="{{ user.diploma_result }}" id="diploma_result" aria-describedby="Diploma Result">
     </div>
 
-  <!--Applied Jobs Section-->
+    <!--Applied Jobs Section-->
 
-  <div>
-    <button type="submit" class="btn btn-primary" name="action" aria-describedby="submit_button">Save Profile</button>
-  </div>
+    <div>
+      <button type="submit" class="btn btn-primary" name="action" aria-describedby="submit_button">Save Profile</button>
+    </div>
 
-   
+
   </form>
 
 
