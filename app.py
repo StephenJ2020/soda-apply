@@ -73,7 +73,7 @@ def user_registration():
         session["user"] = request.form.get("email").lower()
 
         flash("Thanks for joining Soda-Apply!") #should we add another step here for 'proceed to create profile'?
-        return redirect(url_for('profile'))
+        return redirect(url_for('profile', email=session["user"]))
 
     return render_template('pages/user_registration.html')
 
