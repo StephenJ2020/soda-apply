@@ -20,7 +20,7 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def index():
-    return render_template('pages/index.html', users=users)
+    return render_template('pages/index.html')
 
 
 @app.route("/user_registration")
