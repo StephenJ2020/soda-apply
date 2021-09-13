@@ -61,6 +61,11 @@ def accessibility():
     return render_template('pages/accessibility.html', page_title="Accessibility Statement")
 
 
+@app.route("/privacy")
+def privacy():
+    return render_template('pages/privacy.html', page_title="Privacy Statement")
+
+
 if __name__ == "__main__":
     app.run(host=os.environ.get("IP"),
             port=int(os.environ.get("PORT")),
