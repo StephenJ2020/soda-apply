@@ -2,16 +2,16 @@
 
 {% block content %}
 
-<form method="POST" action="{{ url_for('user_create_profile') }}">
-  <!--About Section-->
+  <form method="POST" action="{{ url_for('user_create_profile') }}">
+    <!--About Section-->
 
-  <h2>About Me </h2>
+    <h2>About Me </h2>
     <div class="input-group">
-        <span class="input-group-text">About Me</span>
-        <textarea class="form-control" name="about_me" id="about_me" aria-label="About Me"></textarea>
-      </div>
-  
-  <!--Employment Section-->
+      <span class="input-group-text">About Me</span>
+      <textarea class="form-control" name="about_me" id="about_me" aria-label="About Me"></textarea>
+    </div>
+
+    <!--Employment Section-->
 
     <h2>Employment Experience </h2>
     <div class="mb-3">
@@ -19,30 +19,33 @@
       <input type="text" class="form-control" name="company_name" id="company_name" aria-describedby="company_name">
     </div>
     <div class="mb-3">
-        <label for="role_title" class="form-label">Role Title</label>
-        <input type="text" class="form-control" name="role_title" id="role_title" aria-describedby="role_title">
+      <label for="role_title" class="form-label">Role Title</label>
+      <input type="text" class="form-control" name="role_title" id="role_title" aria-describedby="role_title">
     </div>
     <div class="mb-3">
       <label for="months_employed" class="form-label">Months Employed</label>
-      <input type="int" class="form-control" name="months_employed" id="months_employed" aria-describedby="months_employed">
+      <input type="int" class="form-control" name="months_employed" id="months_employed"
+        aria-describedby="months_employed">
     </div>
 
     <!--Hiring Section-->
 
     <h2>Hiring Preferences</h2>
     <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" name="test_preferences_checkbox" id="test_preferences_checkbox">
+      <input class="form-check-input" type="checkbox" value="" name="test_preferences_checkbox"
+        id="test_preferences_checkbox">
       <label class="test_preferences_checkbox" for="est_preferences_checkbox">
         Test preferences checkbox
       </label>
     </div>
     <div class="input-group">
-        <span class="input-group-text">Other Hiring Preferences Info</span>
-        <textarea class="form-control" name="other_acc_hiring_prefs" id="other_acc_hiring_prefs" aria-label="Other Hiring Preferences Info"></textarea>
+      <span class="input-group-text">Other Hiring Preferences Info</span>
+      <textarea class="form-control" name="other_acc_hiring_prefs" id="other_acc_hiring_prefs"
+        aria-label="Other Hiring Preferences Info"></textarea>
     </div>
 
     <!--Skills Section-->
-    
+
     <h2>Skills & Competencies</h2>
     <div class="form-check">
       <input class="form-check-input" type="checkbox" value="" name="test_skill_checkbox" id="test_skill_checkbox">
@@ -51,8 +54,9 @@
       </label>
     </div>
     <div class="input-group">
-        <span class="input-group-text">Other Skills Info</span>
-        <textarea class="form-control" id="other_skills_competencies" name="Other Skills Info" aria-label="Other Skills Info"></textarea>
+      <span class="input-group-text">Other Skills Info</span>
+      <textarea class="form-control" id="other_skills_competencies" name="Other Skills Info"
+        aria-label="Other Skills Info"></textarea>
     </div>
 
     <!--Education Section-->
@@ -63,21 +67,21 @@
       <input type="text" class="form-control" name="institute_name" id="institute_name" aria-describedby="Institute Name">
     </div>
     <div class="mb-3">
-        <label for="course_title" class="form-label">Course Title</label>
-        <input type="text" class="form-control" name="course_title" id="course_title" aria-describedby="course_title">
+      <label for="course_title" class="form-label">Course Title</label>
+      <input type="text" class="form-control" name="course_title" id="course_title" aria-describedby="course_title">
     </div>
     <div class="mb-3">
       <label for="diploma_result" class="form-label">Diploma Result</label>
       <input type="text" class="form-control" name="diploma_result" id="diploma_result" aria-describedby="Diploma Result">
     </div>
 
-  <!--Applied Jobs Section-->
+    <!--Applied Jobs Section-->
 
-  <div>
-    <button type="submit" class="btn btn-primary" name="action" aria-describedby="submit_button">Save Profile</button>
-  </div>
+    <div>
+      <button type="submit" class="btn btn-primary" name="action" aria-describedby="submit_button">Save Profile</button>
+    </div>
 
-   
+
   </form>
 
 
