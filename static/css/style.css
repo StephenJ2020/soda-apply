@@ -234,6 +234,16 @@ h1 {
     padding-right: 5vw;
 }
 
+    /* Error pages */
+.error-title {
+    font-size: 5rem;
+}
+
+.error-links {
+    color: var(--dk-color);
+    font-weight: 700;
+}
+
 /* Media Queries */
 
 @media (min-width: 768px) {

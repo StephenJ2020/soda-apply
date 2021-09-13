@@ -6,16 +6,28 @@
     <h1>Welcome to SODA apply</h1>
     <div class="row align-items-center">
        <div class="col">
-          <h2>One of three columns</h2>
+          <h2 class="align-items-center">About US</h2>
+          <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur corporis neque quidem enim quo molestiae laborum culpa inventore quod sit a possimus, perspiciatis at suscipit nam iusto eos error consequatur!</p>
        </div>
-       <div class="col">
-          One of three columns
-       </div>
-       <div class="col">
-          One of three columns
-       </div>
+       
     </div>
  </div>
+ <!-- Jobs Section-->
+ {% block section %}
+ <div class="container">
+    {% for job in jobs %}
+   <div class="col-lg-4">
+   <div class="card mb-3" style="max-width: 540px;">
+      <div class="card-header">Header</div>
+      <div class="card-body">
+        <h5 class="card-title">Primary card title</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+      </div>
+    </div>
+   </div>
+  {% endfor %}
+</div>
+{% endblock %}
  <!-- Partners section-->
  <div class="container partners">
     <h2>Our Partners</h2>
