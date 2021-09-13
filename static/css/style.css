@@ -246,7 +246,7 @@ h1 {
 
 .card-header {
     padding: 1rem 3rem;
-    background-color:#ffe6e6;
+    background-color:var(--p1-color);
 }
 
 .card-body p {
@@ -256,6 +256,16 @@ h1 {
 .card-job-details ul {
     padding-left: 15vw;
     padding-right: 5vw;
+}
+
+    /* Contact */
+#send {
+    display: block;
+    margin: 0 auto;
+}
+
+.form-control {
+    font-size: 1.6rem;
 }
 
     /* Error pages */
