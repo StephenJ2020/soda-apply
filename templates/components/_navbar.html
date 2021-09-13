@@ -18,15 +18,18 @@
             <li class="nav-item">
                 <a class="nav-link p-4" id="profile-nav-item" href="#">Profile</a>
             </li>
+            {% if 'user' not in session %}
             <li class="nav-item">
                 <a class="nav-link p-4" id="register-nav-item" href="{{ url_for('user_registration') }}">Register</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link p-4" id="login-nav-item" href="{{ url_for('login') }}">Login</a>
             </li>
+            {% else %}
             <li class="nav-item">
                 <a class="nav-link p-4" id="login-nav-item" href="{{ url_for('logout') }}">Logout</a>
             </li>
+            {% endif %}    
             <li class="nav-item">
                 <a class="nav-link p-4" id="contact-nav-item" href="{{ url_for('contact') }}">Contact</a>
             </li>
