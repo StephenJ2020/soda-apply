@@ -180,6 +180,11 @@ def accessibility():
     return render_template('pages/accessibility.html', page_title="Accessibility Statement")
 
 
+@app.route("/privacy")
+def privacy():
+    return render_template('pages/privacy.html', page_title="Privacy Statement")
+
+
 # Error handlers
 @app.errorhandler(404)
 def response_404(exception):
