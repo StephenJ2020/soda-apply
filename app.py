@@ -58,7 +58,7 @@ def job_details(job_id):
     if request.method == 'POST':
         user = mongo.db.users.find_one({'full_name': 'Gemma Sayers'})
 
-    return render_template('pages/job_details.html', jobs=jobs, job=job, user=user)
+    return render_template('pages/job_details.html', job=job, user=user)
 
 
 @app.route('/job_application/<job_id>', methods=['GET', 'POST'])
