@@ -26,7 +26,8 @@ def index():
     with open("data/partner.json", "r") as json_partnerdata:
         partnerdata = json.load(json_partnerdata)
         random.shuffle(partnerdata)
-    return render_template('pages/index.html', partners=partnerdata)
+    jobs = list(mongo.db.jobs.find())
+    return render_template('pages/index.html', partners=partnerdata, jobs=jobs)
 
 
 @app.route("/user_registration")

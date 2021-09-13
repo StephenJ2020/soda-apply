@@ -1,21 +1,32 @@
 {% extends 'base.html' %}
 
 {% block content %}
-
+<!--About SODA Apply-->
 <div class="container">
     <h1>Welcome to SODA apply</h1>
     <div class="row align-items-center">
        <div class="col">
-          <h2>One of three columns</h2>
-       </div>
-       <div class="col">
-          One of three columns
-       </div>
-       <div class="col">
-          One of three columns
-       </div>
+          <h2>About us</h2>
+          <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Praesentium voluptas assumenda sed incidunt odit. Quod praesentium ullam inventore nostrum at. Cumque, quisquam totam. Laudantium ex sed illum impedit. Magni, maxime!</p>
+       </div>      
     </div>
  </div>
+ <!-- Jobs -->
+ 
+      <div class="container">
+         <h2>Featured Jobs</h2>
+         <div class="row">
+             <div class="col-lg-4">   
+                     
+                     <!-- Job listing Cards -->
+                     {% for job in jobs %} 
+                         {% include 'components/_card.html' %}
+                     {% endfor %}                   
+                
+             </div>
+         </div>
+     </div>
+
  <!-- Partners section-->
  <div class="container partners">
     <h2>Our Partners</h2>
