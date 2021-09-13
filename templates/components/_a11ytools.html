@@ -1,0 +1,44 @@
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary p-4" data-bs-toggle="modal" data-bs-target="#a11yModal">
+    Launch A11y toolset
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="a11yModal" tabindex="-1" aria-labelledby="a11yModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="a11yModalLabel">Accessibility tools</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <p>
+                                Below you will find some assistive tools that you can use to better your experience
+                                on our site.
+                            </p>
+                        </div>
+                        <div class="col-sm-12">
+                            <p>
+                                Color blindness modes/Font Resizer are the first in a suite of tools that we aim to
+                                develop to better help our users have the best possible exposure to a seemless
+                                experience. If you have any idea on how we can improve this, please let us know by
+                                contacting us via our <a class="custom-content-link" href="{{ url_for('contact') }}">Contact</a> page.
+                            </p>
+                        </div>
+                        <div class="col-sm-12 text-center">
+                            <!-- Font resizer A11y Enhancement Tool -->
+                            {% include ('components/_fontscaler.html') %}
+                        </div>
+                        <div class="col-sm-12 text-center">
+                            <!-- Color Blind Theme Switcher A11y Enhancement Tool -->
+                            {% include ('components/_colorblindswitch.html') %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -80,3 +80,69 @@ slider.addEventListener("input", () => {
     let size = (slider.value) * 1.6;
     document.body.style.fontSize = size + "rem";
 });
+
+// Color blindnes Theme switch
+
+const root = document.documentElement;
+const theme = document.querySelector('#color-blind-mode');
+const p1Color = '--p1-color';
+const s1Color = '--s1-color';
+const t1Color = '--t1-color';
+const dkColor = '--dk-color';
+const dkTextColor = '--dk-text-color';
+const highlightTextColor = '--highlight-text-color';
+
+theme.addEventListener("change", () => {
+    /**
+     * Simple color blind theme switcher
+     * to improve user experience for those
+     * with potential color blindness types.
+     * 
+     * Colors defined in this switch statement
+     * needs to be researched more to ensure
+     * type of color blindness is properly catered
+     * for. This is just a proof of concept right now.
+     */
+    switch(theme.value) {
+        case 'protanomaly':
+            root.style.setProperty(p1Color, '#E1DAAE');
+            root.style.setProperty(s1Color, '#CC2D35');
+            root.style.setProperty(t1Color, '#FF934F');
+            root.style.setProperty(dkColor, '#1e1e1e');
+            root.style.setProperty(dkTextColor, '#0e151d');
+            root.style.setProperty(highlightTextColor, '#32378c');
+            break;
+        case 'deuteranopia':
+            root.style.setProperty(p1Color, '#e0f3db');
+            root.style.setProperty(s1Color, '#43a2ca');
+            root.style.setProperty(t1Color, '#a8ddb5');
+            root.style.setProperty(dkColor, '#1e1e1e');
+            root.style.setProperty(dkTextColor, '#0e151d');
+            root.style.setProperty(highlightTextColor, '#3428ba');
+            break;
+        case 'deuteranomaly':
+            root.style.setProperty(p1Color, '#d2cdee');
+            root.style.setProperty(s1Color, '#7071E9');
+            root.style.setProperty(t1Color, '#7071E9');
+            root.style.setProperty(dkColor, '#1e1e1e');
+            root.style.setProperty(dkTextColor, '#07071b');
+            root.style.setProperty(highlightTextColor, '#111264');
+            break;
+        case 'tritanopia':
+            root.style.setProperty(p1Color, '#D8BFD8');
+            root.style.setProperty(s1Color, '#DF67D0');
+            root.style.setProperty(t1Color, '#c281bf');
+            root.style.setProperty(dkColor, '#1e1e1e');
+            root.style.setProperty(dkTextColor, '#02030f');
+            root.style.setProperty(highlightTextColor, '#0d2791');
+            break;
+        default:
+            root.style.setProperty(p1Color, '#FFEBEA');
+            root.style.setProperty(s1Color, '#f0452b');
+            root.style.setProperty(t1Color, '#cc9290');
+            root.style.setProperty(dkColor, '#1e1e1e');
+            root.style.setProperty(dkTextColor, '#0e151d');
+            root.style.setProperty(highlightTextColor, '#c02421');
+            break;
+    }
+});
