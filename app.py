@@ -30,10 +30,10 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def index():
-    partnerdata = []    
+    partnerdata = []   
     with open("data/partner.json", "r") as json_partnerdata:
         partnerdata = json.load(json_partnerdata)
-        random.shuffle(partnerdata)
+        random.shuffle(partnerdata)    
     jobs = list(mongo.db.jobs.find())
     return render_template('pages/index.html', partners=partnerdata, jobs=jobs)
 
