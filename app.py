@@ -41,12 +41,11 @@ def index():
 @app.route("/user_registration", methods=["GET", "POST"])
 def user_registration():
     if request.method == "POST":
-
         existing_user = mongo.db.users.find_one(
             {"email": request.form.get("email").lower()})
 
         if existing_user:
-            flash("Username already exists")
+            flash("Email already exists")
             return redirect(url_for("user_registration"))
 
         user_registration = {
@@ -66,7 +65,7 @@ def user_registration():
             #"diploma result": "",
             #"jobs_applied":[]
         }
-        mongo.db.users.insert_one(user_registration)
+        mongo.db.users.insert_one(registration)
         """
         start a session for the user with a session cookie
         """
@@ -93,7 +92,7 @@ def user_create_profile(email):
             "skills_competencies": request.form.getlist("skills_competencies"),
             "institute_name": request.form.get("institute_name"),
             "course_title": request.form.get("course_title"),
-            "diploma result": request.form.get("diploma result")
+            "diploma_result": request.form.get("diploma_result")
         }}
         print(user)
         mongo.db.users.update({"_id": ObjectId(email)}, personalise_details)
@@ -102,6 +101,14 @@ def user_create_profile(email):
 
     return render_template('pages/index.html')
 
+@app.route("/profile/<user_id>")
+def profile(user_id):
+    full_name = mongo.db.users.find_one(
+        {"full_name": session["user"]})["full_name"]
+    user = mongo.db.users.find_one(
+        {"_id": session["user"]})["_id"]
+    
+    return render_template('pages/profile.html', full_name=full_name, user_id=session["user"]["_id"], user=user)
 
 @app.route("/user_edit_profile")
 def user_edit_profile():
@@ -155,7 +162,6 @@ def login():
 def logout():
     session.clear()
     return redirect(url_for("login"))
-
 
 
 @app.route("/contact")
