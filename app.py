@@ -107,6 +107,7 @@ def user_create_profile(email):
 def user_edit_profile():
     return render_template('pages/user_create_profile.html')
 
+
 @app.route("/profile/<email>")
 def profile(email):
     user = mongo.db.users.find_one({"email": session["user"]})["email"]
@@ -157,7 +158,6 @@ def logout():
     return redirect(url_for("login"))
 
 
-
 @app.route("/contact")
 def contact():
     return render_template('pages/contact.html', page_title="Contact Us")
@@ -169,50 +169,44 @@ def job_listings():
     Allow users to see all job listings
     """
     jobs_list = list(mongo.db.jobs.find())
-
-    # if session['user']:
-        # user = mongo.db.users.find_one({'full_name': 'Gemma Sayers'})
+    applied = None
+    
         # jobs = list(mongo.db.jobs.find())
         # jobs_applied = list(mongo.db.users.find({'jobs_applied': { '$in': jobs[1],} }))
-    return render_template('pages/job_listings.html', jobs_list=jobs_list)
+    return render_template('pages/job_listings.html', jobs_list=jobs_list, applied=applied)
 
 
-@app.route("/job_details/<job_id>", methods=['GET', 'POST'])
+@app.route("/job_details/<job_id>/", methods=['GET', 'POST'])
 def job_details(job_id):
     """
     Allow user to view the complete job description
     """
-    user = mongo.db.users.find_one({'full_name': 'Gemma Sayers'})
     job = mongo.db.jobs.find_one({'_id': ObjectId(job_id)})
+    user = mongo.db.users.find_one({"email": session["user"]})
 
     if request.method == 'POST':
-        user = mongo.db.users.find_one({'full_name': 'Gemma Sayers'})
+        user = mongo.db.users.find_one({"email": session["user"]})
 
     return render_template('pages/job_details.html', job=job, user=user)
 
 
-@app.route('/job_application/<job_id>', methods=['GET', 'POST'])
+@app.route('/job_application/<job_id>/', methods=['GET', 'POST'])
 def job_applied(job_id):
     """ 
     Stores data record that the user applied for a job. 
     Stores the job into job_applied data array.
     """
-    # user = mongo.db.jobs.find_one({'_id': ObjectId(user_id)})
-    # user = mongo.db.users.find_one({'full_name': 'Gemma Sayers'}) 
     user_jobs = []
-
+    
     if request.method == 'POST':
         job = mongo.db.jobs.find_one({'_id': ObjectId(job_id)}) 
         user_jobs.append(job['role'])
 
-        # mongo.db.users.update({'_id': ObjectId(user_id)}, {
-        #                       '$push': {'jobs_applied': user_jobs[0],}})
-        mongo.db.users.update({'full_name': 'Gemma Sayers'}, {
+        mongo.db.users.update({"email": session["user"]}, {
                               '$push': {'jobs_applied': user_jobs[0],}})
-        print(user_jobs)
+        applied = True
 
-    return redirect(url_for('job_listings'))
-
+    return redirect(url_for('job_listings', applied=applied))
 
 
 @app.route("/accessibility")

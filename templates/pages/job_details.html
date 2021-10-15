@@ -54,13 +54,13 @@
 
         <!-- Footer description -->
         <h3 class="job-type">Job Type: <span class="ps-3">{{ job.salary.type }}</span></h3>
-        <h3 class="job-salary">Salary: <span class="ps-3">{{ job.salary.salary_amount }} per year</span></h3>
+        <h3 class="job-salary">Salary: <span class="ps-3">{{ job.salary.salary_amount }}</span></h3>
         <h3 class="schedule">Schedule: <span class="ps-3">{{ job.schedule }}</span></h3>
     </div>
 </div>
 
     <!-- Modal -->
-    <form class="col s12" method="POST" action="{{ url_for('job_applied', job_id=job._id, user_id=user._id) }}">
-        {% include 'components/_modal.html' %}
-    </form>
+    {% include 'components/_modal.html' %}
+
+    <script src="{{ url_for('static', filename='js/modal.js') }}"></script>
 {% endblock %}

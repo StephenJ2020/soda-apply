@@ -1,43 +1,58 @@
 <!-- Modal Structure -->
-<div class="modal fade" id="job_apply" tabindex="-1" aria-labelledby="Job-Application-Modal" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3 class="modal-title">Application for <span class="text-red">{{ job.role }}</span> with 
-                    <span class="text-red">{{ job.employer }}</span>
-                </h3>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                
-                    Applicant: <span class="ps-3">{{ user.full_name }}</span> <br>
-                    Email: <span class="ps-3">{{ user.email }}</span> <br>
-
-                    <hr class="text-secondary">
-
-                    <!-- Preferences -->
-                    {% if user.accessible_hiring_preferences %}
-                        Accessibility Preferences: 
-                            <ul>
-                            {% for preference in user.accessible_hiring_preferences %}
-                                <li>{{ preference }}</li>
-                            {% endfor %}
-                            </ul>
-                    {% endif %}
-
-                     <!-- Other -->
-                    {% if user.other_acc_hiring_preferences %}
-                        Hiring Preferences: <br>
-                            <ul>
-                                <li><span class="ps-3">{{ user.other_acc_hiring_preferences }}</span></li>
-                            </ul>
-                    {% endif %}       
+<form class="col" method="POST" action="{{ url_for('job_applied', job_id=job._id) }}">
+    <div class="modal fade" id="job_apply" tabindex="-1" aria-labelledby="Job-Application-Modal" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Application for <span style="color: var(--s1-color);">{{ job.role }}</span> with 
+                        <span style="color: var(--s1-color);">{{ job.employer }}</span>
+                    </h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
                     
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-lg rounded-pill btn-outline-dark" data-bs-dismiss="modal">Back</button>
-                <button type="submit" class="btn btn-lg rounded-pill btn-outline-success" id="liveToastBtn">SODApply</button>
+                        Applicant: <span class="ps-3">{{ user.full_name }}</span> <br>
+                        Email: <span class="ps-3">{{ user.email }}</span> <br>
+
+                        <hr class="text-secondary">
+
+                        <!-- Preferences -->
+                        {% if user.accessible_hiring_preferences %}
+                            Accessibility Preferences: 
+                                <ul>
+                                {% for preference in user.accessible_hiring_preferences %}
+                                    <li>{{ preference }}</li>
+                                {% endfor %}
+                                </ul>
+                        {% endif %}
+
+                        <!-- Other -->
+                        {% if user.other_acc_hiring_preferences %}
+                            Hiring Preferences: <br>
+                                <ul>
+                                    <li><span class="ps-3">{{ user.other_acc_hiring_preferences }}</span></li>
+                                </ul>
+                        {% endif %}       
+                        
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-lg rounded-pill btn-outline-dark" data-bs-dismiss="modal">Back</button>
+                    <button type="submit" class="btn btn-lg rounded-pill btn-outline-success" id="ToastBtn">SODApply</button>
+                </div>
             </div>
         </div>
     </div>
-</div>
+</form>
+
+<script>
+    // Toasts from bootstrap
+        // document.getElementById("ToastBtn").onclick = function() {
+        //     var toastElList = [].slice.call(document.querySelectorAll('.toast'))
+        //     var toastList = toastElList.map(function (toastEl) {
+        //         return new bootstrap.Toast(toastEl);
+        //     })
+        
+        //     toastList.forEach(toast => toast.show());
+        //     console.log(toastList);
+        // }
+</script>

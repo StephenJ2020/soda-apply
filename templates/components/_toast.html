@@ -1,0 +1,25 @@
+{% if applied != None or "" %}
+<div class="position-fixed top-0 end-0 p-3" style="z-index: 1000">
+  <div id="liveToast" class="toast show bg-white" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">SODApply</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      <h4>You have applied to {{ job.role }}</h4>
+    </div>
+  </div>
+</div>
+{% elif applied == True %}
+<div class="position-fixed top-0 end-0 p-3" style="z-index: 1000">
+  <div id="liveToast" class="toast show bg-white" role="alert" aria-live="assertive" aria-atomic="true">
+    <div class="toast-header">
+      <strong class="me-auto">SODApply</strong>
+      <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+    </div>
+    <div class="toast-body">
+      <h4>Apply Today!</h4>
+    </div>
+  </div>
+</div>
+{% endif %}
